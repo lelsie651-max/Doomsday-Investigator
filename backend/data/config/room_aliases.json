@@ -1,0 +1,22 @@
+{
+  "aliases": {
+    "office": "office",
+    "主办公区": "office",
+    "办公区": "office",
+    "办公区域": "office",
+    "meeting": "meeting",
+    "meeting_room": "meeting",
+    "会议室": "meeting",
+    "warehouse": "warehouse",
+    "仓库": "warehouse",
+    "pantry": "pantry",
+    "茶水间": "pantry",
+    "reception": "reception",
+    "接待区": "reception",
+    "前台": "reception",
+    "boss_office": "boss_office",
+    "经理办公室": "boss_office",
+    "老板办公室": "boss_office",
+    "pua": "pua"
+  }
+}

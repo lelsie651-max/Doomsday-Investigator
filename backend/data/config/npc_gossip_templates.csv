@@ -1,0 +1,9 @@
+template_id,text
+listener_about_speaker,我听{speaker_name}跟我提了{owner_name}的事
+listener_about_speaker,{speaker_name}神神秘秘地提了{owner_name}一嘴，我默默记下
+listener_about_owner,{speaker_name}凑过来悄悄说：“{gossip_content}”——这事我先记一笔
+listener_about_owner,{speaker_name}悄悄跟我讲：“{gossip_content}”——我半信半疑
+scout_observation,你的小助理看到{speaker_name}凑在同事耳边嘀嘀咕咕，其他人表情明显紧张了几分。
+scout_observation,你的小助理看见{speaker_name}压低声音说着什么，周围同事神色都变了。
+player_notice,你注意到{speaker_name}正凑在其他人耳边嘀嘀咕咕……
+player_notice,你瞥见{speaker_name}在角落里低声传播着什么。

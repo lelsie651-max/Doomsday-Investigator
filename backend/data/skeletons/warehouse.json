@@ -1,0 +1,204 @@
+{
+    "task_warehouse_001": {
+        "duo": [
+            {
+                "id": "SKL_WAREHOUSE_001",
+                "room": "warehouse",
+                "skeleton": "\n场景核心：{primary_npc}正在{action}，而手里的{object}已经{gone_wrong}。\n冲突点：你提出质疑，{primary_npc}却表示这恰好说明了{absurd_logic}。\n升级：不仅如此，{primary_npc}还打算{escalation}。\n结尾困境：{primary_npc}停下动作，向你逼近了一步，把问题抛给了你，等待你的反应。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            },
+            {
+                "id": "SKL_WAREHOUSE_005",
+                "room": "warehouse",
+                "skeleton": "\n场景核心：{primary_npc}拿着{object}拦住了你，它显然已经{gone_wrong}。\n冲突点：{primary_npc}试图向你证明这是{absurd_logic}。\n升级：看你没有立刻同意，{primary_npc}表示马上就要{escalation}。\n结尾困境：{primary_npc}双手抱胸，目光死死锁住你，等待你的答复。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_WAREHOUSE_001",
+                "skeleton": "\\n场景核心：你独自执行「查看罐头库存」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "warehouse"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_WAREHOUSE_001",
+                "skeleton": "\\n场景核心：你正在处理「查看罐头库存」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "warehouse"
+            }
+        ]
+    },
+    "task_warehouse_002": {
+        "duo": [
+            {
+                "id": "SKL_WAREHOUSE_002",
+                "room": "warehouse",
+                "skeleton": "\n场景核心：{primary_npc}和另一人正因为{conflict_topic}爆发争吵。\n对立面：{primary_npc}强调{stance_a}，对方则反驳说{stance_b}。\n升级：沟通破裂，局势从{verbal_level}恶化为{physical_level}。\n结尾困境：一个重物倒塌的声音打断了他们，两人同时转过头，注视着你等待表态。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            },
+            {
+                "id": "SKL_WAREHOUSE_EV_003",
+                "room": "warehouse",
+                "skeleton": "\n场景核心：{primary_npc}正在{evidence_action}，但{evidence_object}已经{evidence_gone_wrong}。\n冲突点：你恰好撞见，{primary_npc}用{absurd_logic}来解释刚才的行为。\n升级：为了封口，{primary_npc}当场提议{escalation}。\n结尾困境：{primary_npc}走近你，压低了声音，把选择权交给了你。\n{bystander_note}\n",
+                "evidence_type": "corruption",
+                "evidence_hint": "透露出NPC在私吞紧缺物资、把公司资产偷偷转移给黑市供货商、或者藏匿高管特供品的线索。"
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_WAREHOUSE_002",
+                "skeleton": "\\n场景核心：你独自执行「整理货架」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "warehouse"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_WAREHOUSE_002",
+                "skeleton": "\\n场景核心：你正在处理「整理货架」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "warehouse"
+            }
+        ]
+    },
+    "task_warehouse_003": {
+        "duo": [
+            {
+                "id": "SKL_WAREHOUSE_EV_001",
+                "room": "warehouse",
+                "skeleton": "\n场景核心：{primary_npc}正在{evidence_action}，完全不顾{evidence_object}出现了{evidence_gone_wrong}。\n冲突点：面对你的注视，{primary_npc}用{absurd_logic}来应对。\n升级：为了加快进度，{primary_npc}准备直接{escalation}。\n结尾困境：{primary_npc}把工具递向你，空气瞬间凝固，就看你接不接。\n{bystander_note}\n",
+                "evidence_type": "product_fake",
+                "evidence_hint": "让NPC自然提到涂改日期、更换变质标签、或者重新封装过期罐头的细节。"
+            },
+            {
+                "id": "SKL_WAREHOUSE_006",
+                "room": "warehouse",
+                "skeleton": "\n场景核心：一场关于{conflict_topic}的讨论在{primary_npc}和另一人之间演变成了冲突。\n对立面：{primary_npc}主张{stance_a}，对方则坚持{stance_b}。\n升级：情绪失控，两人的动作从{verbal_level}滑向了{physical_level}。\n结尾困境：某样东西掉落的声音让两人停手，他们齐刷刷地看向你，等待你的动作。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_WAREHOUSE_003",
+                "skeleton": "\\n场景核心：你独自执行「清点过期产品」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "warehouse"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_WAREHOUSE_003",
+                "skeleton": "\\n场景核心：你正在处理「清点过期产品」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "warehouse"
+            }
+        ]
+    },
+    "task_warehouse_004": {
+        "duo": [
+            {
+                "id": "SKL_WAREHOUSE_003",
+                "room": "warehouse",
+                "skeleton": "\n场景核心：{primary_npc}对着{object}不断{action}，导致其彻底{gone_wrong}。\n冲突点：你发出声音，{primary_npc}转过头解释这是为了{absurd_logic}。\n升级：紧接着，{primary_npc}宣布下一步要{escalation}。\n结尾困境：{primary_npc}盯着你，挡住了你的去路，等待你的动作。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            },
+            {
+                "id": "SKL_WAREHOUSE_EV_004",
+                "room": "warehouse",
+                "skeleton": "\n场景核心：{primary_npc}正在{evidence_action}，没注意到{evidence_object}暴露了{evidence_gone_wrong}。\n冲突点：面对你的质疑，{primary_npc}表示这是{absurd_logic}。\n升级：为了强行推进，{primary_npc}表示立刻就会{escalation}。\n结尾困境：{primary_npc}把一叠登记表拍在面前，向你施加压力，就看你作何反应。\n{bystander_note}\n",
+                "evidence_type": "employee_abuse",
+                "evidence_hint": "NPC对话中提到强迫无防护员工搬运变异生物尸体、克扣搬运工抗毒血清、或让感染者睡在货架上。"
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_WAREHOUSE_004",
+                "skeleton": "\\n场景核心：你独自执行「搬运新货」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "warehouse"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_WAREHOUSE_004",
+                "skeleton": "\\n场景核心：你正在处理「搬运新货」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "warehouse"
+            }
+        ]
+    },
+    "task_warehouse_005": {
+        "duo": [
+            {
+                "id": "SKL_WAREHOUSE_004",
+                "room": "warehouse",
+                "skeleton": "\n场景核心：因为{conflict_topic}，{primary_npc}与同事陷入僵局。\n对立面：{primary_npc}拿出{stance_a}作为理由，而同事用{stance_b}回击。\n升级：双方互不退让，行为从{verbal_level}升级成了{physical_level}。\n结尾困境：两人同时停手，视线锁定在你身上，似乎在要求你打破这个局面。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_WAREHOUSE_005",
+                "skeleton": "\\n场景核心：你独自执行「检查仓库安全」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "warehouse"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_WAREHOUSE_005",
+                "skeleton": "\\n场景核心：你正在处理「检查仓库安全」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "warehouse"
+            }
+        ]
+    },
+    "task_warehouse_006": {
+        "duo": [
+            {
+                "id": "SKL_WAREHOUSE_EV_002",
+                "room": "warehouse",
+                "skeleton": "\n场景核心：{primary_npc}试图{evidence_action}，却引发了{evidence_object}的{evidence_gone_wrong}。\n冲突点：{primary_npc}毫无反应，甚至认为这属于{absurd_logic}。\n升级：为了省事，{primary_npc}决定不向上报备，而是{escalation}。\n结尾困境：{primary_npc}拍了拍手，直勾勾地看着你，把难题留给了你。\n{bystander_note}\n",
+                "evidence_type": "safety_hazard",
+                "evidence_hint": "让NPC不经意提到承重墙开裂、防爆门卡死、或变异老鼠咬断了电缆等仓库安全隐患。"
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_WAREHOUSE_006",
+                "skeleton": "\\n场景核心：你独自执行「处理退货」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "warehouse"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_WAREHOUSE_006",
+                "skeleton": "\\n场景核心：你正在处理「处理退货」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "warehouse"
+            }
+        ]
+    }
+}

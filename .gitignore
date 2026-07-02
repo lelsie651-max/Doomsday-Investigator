@@ -1,0 +1,43 @@
+# === 敏感信息(绝对不能提交)===
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.pytest_cache/
+
+# === PyInstaller 打包产物 ===
+dist/
+build/
+*.spec
+
+# === AI 调用日志(体积大且含 prompt 内容)===
+backend/logs/
+*.log
+
+# === Godot ===
+.godot/
+.import/
+export.cfg
+export_presets.cfg
+
+# === 操作系统 / IDE ===
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.trae/
+*.swp
+*~
+
+# === 临时备份 ===
+*.bak
+*.tmp

@@ -1,0 +1,17 @@
+{
+    "office-meeting": 2.0,
+    "office-warehouse": 2.0,
+    "office-pantry": 1.5,
+    "office-reception": 3.0,
+    "office-boss_office": 2.5,
+    "meeting-warehouse": 3.0,
+    "meeting-pantry": 2.5,
+    "meeting-reception": 3.5,
+    "meeting-boss_office": 2.0,
+    "warehouse-pantry": 2.5,
+    "warehouse-reception": 3.5,
+    "warehouse-boss_office": 3.5,
+    "pantry-reception": 2.0,
+    "pantry-boss_office": 3.0,
+    "reception-boss_office": 3.5
+}

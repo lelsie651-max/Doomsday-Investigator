@@ -1,0 +1,840 @@
+[gd_scene load_steps=9 format=3 uid="uid://m48fpjly7fe"]
+
+[ext_resource type="Script" uid="uid://dbuq6lyysm0f3" path="res://scripts/game_ui.gd" id="1_gameui"]
+[ext_resource type="Script" uid="uid://c8fq60uk602ra" path="res://scripts/task_selection_ui.gd" id="2_tasksel"]
+[ext_resource type="Script" uid="uid://npu3ku5e5bya" path="res://scripts/event_popup.gd" id="3_eventpop"]
+[ext_resource type="Script" uid="uid://2kn0ixvsotve" path="res://scripts/working_ui.gd" id="4_workui"]
+[ext_resource type="Script" uid="uid://dbi6gsx5drv84" path="res://scripts/voting_ui.gd" id="5_voteui"]
+[ext_resource type="Script" uid="uid://6a03r6frw56g" path="res://scripts/night_ui.gd" id="6_nightui"]
+[ext_resource type="Script" path="res://scripts/shop_ui.gd" id="8_shopui"]
+
+[node name="GameUI" type="Control" unique_id=100650588]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gameui")
+
+[node name="TopBar" type="HBoxContainer" parent="." unique_id=274504354]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = 5.0
+offset_right = -10.0
+offset_bottom = 35.0
+grow_horizontal = 2
+theme_override_constants/separation = 30
+
+[node name="DayLabel" type="Label" parent="TopBar" unique_id=871207383]
+layout_mode = 2
+text = "第1天"
+
+[node name="GoldLabel" type="Label" parent="TopBar" unique_id=407661516]
+layout_mode = 2
+text = "行动力: 8小时"
+
+[node name="BatteryLabel" type="Label" parent="TopBar" unique_id=1789841547]
+layout_mode = 2
+text = "电量: 100%"
+
+[node name="EvidenceLabel" type="Label" parent="TopBar" unique_id=844347423]
+layout_mode = 2
+text = "证据: 0份"
+
+[node name="CardsTopLabel" type="Label" parent="TopBar"]
+layout_mode = 2
+text = "空白卡: 3张"
+
+[node name="PauseStatusLabel" type="Label" parent="TopBar"]
+visible = false
+layout_mode = 2
+text = "PAUSED"
+
+[node name="TaskSelectionUI" type="Control" parent="." unique_id=512874001]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_tasksel")
+
+[node name="MarginContainer" type="MarginContainer" parent="TaskSelectionUI" unique_id=399508968]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 45
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="TaskSelectionUI/MarginContainer" unique_id=279786538]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TitleLabel" type="Label" parent="TaskSelectionUI/MarginContainer/VBox" unique_id=1792708979]
+layout_mode = 2
+text = "任务选择"
+horizontal_alignment = 1
+
+[node name="HintLabel" type="Label" parent="TaskSelectionUI/MarginContainer/VBox" unique_id=77371930]
+layout_mode = 2
+text = "选择今日要完成的任务"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TaskSelectionUI/MarginContainer/VBox" unique_id=1424115847]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="TaskList" type="VBoxContainer" parent="TaskSelectionUI/MarginContainer/VBox/ScrollContainer" unique_id=1318256611]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="BottomBar" type="HBoxContainer" parent="TaskSelectionUI/MarginContainer/VBox" unique_id=2097333877]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="SelectedCountLabel" type="Label" parent="TaskSelectionUI/MarginContainer/VBox/BottomBar" unique_id=1831289298]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "已选 0/8 小时"
+
+[node name="ShopBtn" type="Button" parent="TaskSelectionUI/MarginContainer/VBox/BottomBar"]
+layout_mode = 2
+custom_minimum_size = Vector2(80, 0)
+text = "🛒 商城"
+
+[node name="ConfirmBtn" type="Button" parent="TaskSelectionUI/MarginContainer/VBox/BottomBar" unique_id=10746689]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "请至少选择1个任务"
+
+[node name="WorkingUI" type="Control" parent="." unique_id=1959026478]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_workui")
+
+[node name="Margin" type="MarginContainer" parent="WorkingUI" unique_id=621612472]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 45
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="WorkingUI/Margin" unique_id=1049687301]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HourBar" type="HBoxContainer" parent="WorkingUI/Margin/VBox" unique_id=1447314772]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HourLabel" type="Label" parent="WorkingUI/Margin/VBox/HourBar" unique_id=1193197960]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "第 1 / 8 小时"
+
+[node name="HourProgress" type="ProgressBar" parent="WorkingUI/Margin/VBox/HourBar" unique_id=238361838]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 8.0
+value = 1.0
+show_percentage = false
+
+[node name="MainContent" type="HBoxContainer" parent="WorkingUI/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="RoomOverviewPanel" type="PanelContainer" parent="WorkingUI/Margin/VBox/MainContent"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Margin" type="MarginContainer" parent="WorkingUI/Margin/VBox/MainContent/RoomOverviewPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/RoomOverviewPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="RoomOverviewTitle" type="Label" parent="WorkingUI/Margin/VBox/MainContent/RoomOverviewPanel/Margin/VBox"]
+layout_mode = 2
+text = "房间概览"
+
+[node name="RoomList" type="VBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/RoomOverviewPanel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="RoomRow_office" type="HBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/RoomOverviewPanel/Margin/VBox/RoomList"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="RoomName" type="Label" parent="WorkingUI/Margin/VBox/MainContent/RoomOverviewPanel/Margin/VBox/RoomList/RoomRow_office"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "🏢 主办公区"
+
+[node name="PeopleLabel" type="Label" parent="WorkingUI/Margin/VBox/MainContent/RoomOverviewPanel/Margin/VBox/RoomList/RoomRow_office"]
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 2
+text = "(空)"
+
+[node name="RoomRow_meeting" type="HBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/RoomOverviewPanel/Margin/VBox/RoomList"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="RoomName" type="Label" parent="WorkingUI/Margin/VBox/MainContent/RoomOverviewPanel/Margin/VBox/RoomList/RoomRow_meeting"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "📋 会议室"
+
+[node name="PeopleLabel" type="Label" parent="WorkingUI/Margin/VBox/MainContent/RoomOverviewPanel/Margin/VBox/RoomList/RoomRow_meeting"]
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 2
+text = "(空)"
+
+[node name="RoomRow_warehouse" type="HBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/RoomOverviewPanel/Margin/VBox/RoomList"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="RoomName" type="Label" parent="WorkingUI/Margin/VBox/MainContent/RoomOverviewPanel/Margin/VBox/RoomList/RoomRow_warehouse"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "📦 仓库"
+
+[node name="PeopleLabel" type="Label" parent="WorkingUI/Margin/VBox/MainContent/RoomOverviewPanel/Margin/VBox/RoomList/RoomRow_warehouse"]
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 2
+text = "(空)"
+
+[node name="RoomRow_pantry" type="HBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/RoomOverviewPanel/Margin/VBox/RoomList"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="RoomName" type="Label" parent="WorkingUI/Margin/VBox/MainContent/RoomOverviewPanel/Margin/VBox/RoomList/RoomRow_pantry"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "☕ 茶水间"
+
+[node name="PeopleLabel" type="Label" parent="WorkingUI/Margin/VBox/MainContent/RoomOverviewPanel/Margin/VBox/RoomList/RoomRow_pantry"]
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 2
+text = "(空)"
+
+[node name="RoomRow_reception" type="HBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/RoomOverviewPanel/Margin/VBox/RoomList"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="RoomName" type="Label" parent="WorkingUI/Margin/VBox/MainContent/RoomOverviewPanel/Margin/VBox/RoomList/RoomRow_reception"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "🚪 接待区"
+
+[node name="PeopleLabel" type="Label" parent="WorkingUI/Margin/VBox/MainContent/RoomOverviewPanel/Margin/VBox/RoomList/RoomRow_reception"]
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 2
+text = "(空)"
+
+[node name="RoomRow_boss_office" type="HBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/RoomOverviewPanel/Margin/VBox/RoomList"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="RoomName" type="Label" parent="WorkingUI/Margin/VBox/MainContent/RoomOverviewPanel/Margin/VBox/RoomList/RoomRow_boss_office"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "👔 经理办公室"
+
+[node name="PeopleLabel" type="Label" parent="WorkingUI/Margin/VBox/MainContent/RoomOverviewPanel/Margin/VBox/RoomList/RoomRow_boss_office"]
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 2
+text = "(空)"
+
+[node name="EventContentPanel" type="VBoxContainer" parent="WorkingUI/Margin/VBox/MainContent"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="RoomSection" type="VBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel" unique_id=736445079]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="RoomLabel" type="Label" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/RoomSection" unique_id=1313175248]
+layout_mode = 2
+text = "🏢 主办公区"
+
+[node name="CoworkerList" type="VBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/RoomSection" unique_id=2052301569]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="BossIndicator" type="Label" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/RoomSection" unique_id=1243138142]
+visible = false
+layout_mode = 2
+text = "🐙 鲍斯（经理）在这里！"
+
+[node name="NotificationArea" type="RichTextLabel" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel" unique_id=1399643054]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="StatusBar" type="HBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel" unique_id=159736089]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="GoldLabel" type="Label" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/StatusBar" unique_id=1390297136]
+layout_mode = 2
+text = "💰 50"
+
+[node name="BatteryLabel" type="Label" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/StatusBar" unique_id=123124555]
+layout_mode = 2
+text = "🔋 100%"
+
+[node name="EvidenceLabel" type="Label" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/StatusBar" unique_id=1698288122]
+layout_mode = 2
+text = "📋 0份"
+
+[node name="CardsLabel" type="Label" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/StatusBar" unique_id=844494849]
+layout_mode = 2
+text = "📼 3张"
+
+[node name="BottomBar" type="HBoxContainer" parent="WorkingUI/Margin/VBox"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ShopButton" type="Button" parent="WorkingUI/Margin/VBox/BottomBar"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "🛒 商城"
+
+[node name="ScoutButton" type="Button" parent="WorkingUI/Margin/VBox/BottomBar"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "🔍 侦察（消耗33%电量）"
+
+[node name="StatusLabel" type="Label" parent="WorkingUI/Margin/VBox/BottomBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "第1/8小时"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkipButton" type="Button" parent="WorkingUI/Margin/VBox/BottomBar"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "继续 →"
+
+[node name="PauseButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -130.0
+offset_top = 4.0
+offset_right = -16.0
+offset_bottom = 34.0
+grow_horizontal = 0
+text = "⏸ 暂停"
+
+[node name="PauseOverlay" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+color = Color(0, 0, 0, 0.5)
+
+[node name="PauseLabel" type="Label" parent="PauseOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "⏸ 已暂停 - 点击任意位置继续"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EventPopup" type="Control" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel" unique_id=1562670739]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("3_eventpop")
+
+[node name="EventPanel" type="PanelContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup" unique_id=1675503434]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/EventPanel" unique_id=353017548]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/EventPanel/Margin" unique_id=1318991890]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HourLabel" type="Label" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/EventPanel/Margin/VBox" unique_id=1953240964]
+layout_mode = 2
+text = "第 1/8 小时"
+horizontal_alignment = 2
+
+[node name="EventNameLabel" type="Label" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/EventPanel/Margin/VBox" unique_id=1267543325]
+layout_mode = 2
+text = "事件名称"
+horizontal_alignment = 1
+
+[node name="EventScroll" type="ScrollContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/EventPanel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Content" type="VBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/EventPanel/Margin/VBox/EventScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="EventDescLabel" type="RichTextLabel" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/EventPanel/Margin/VBox/EventScroll/Content" unique_id=241046524]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "事件描述..."
+fit_content = true
+scroll_active = false
+
+[node name="EvidenceHintLabel" type="Label" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/EventPanel/Margin/VBox/EventScroll/Content" unique_id=1784323754]
+visible = false
+layout_mode = 2
+text = "证据线索"
+autowrap_mode = 2
+
+[node name="PromptLabel" type="Label" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/EventPanel/Margin/VBox/EventScroll/Content" unique_id=38536483]
+layout_mode = 2
+text = "你的选择是？"
+autowrap_mode = 2
+
+[node name="CardSection" type="VBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/EventPanel/Margin/VBox/EventScroll/Content" unique_id=934501287]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="EmotionBox" type="VBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/EventPanel/Margin/VBox/EventScroll/Content/CardSection" unique_id=1721354050]
+layout_mode = 2
+
+[node name="EmotionTitle" type="Label" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/EventPanel/Margin/VBox/EventScroll/Content/CardSection/EmotionBox" unique_id=1426852810]
+layout_mode = 2
+text = "情绪卡（选1张）："
+
+[node name="EmotionCards" type="HBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/EventPanel/Margin/VBox/EventScroll/Content/CardSection/EmotionBox" unique_id=1311613048]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ActionBox" type="VBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/EventPanel/Margin/VBox/EventScroll/Content/CardSection" unique_id=1225792039]
+layout_mode = 2
+
+[node name="ActionTitle" type="Label" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/EventPanel/Margin/VBox/EventScroll/Content/CardSection/ActionBox" unique_id=1738692227]
+layout_mode = 2
+text = "行动卡（选1张）："
+
+[node name="ActionCards" type="HBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/EventPanel/Margin/VBox/EventScroll/Content/CardSection/ActionBox" unique_id=714970973]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PlayBtn" type="Button" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/EventPanel/Margin/VBox" unique_id=872889186]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+disabled = true
+text = "请选择卡牌"
+
+[node name="ResultPanel" type="PanelContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup" unique_id=126164686]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel" unique_id=1923518382]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 30
+
+[node name="VBox" type="VBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin" unique_id=1402640486]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="ComboLabel" type="Label" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin/VBox" unique_id=922113260]
+layout_mode = 2
+text = "组合类型"
+horizontal_alignment = 1
+
+[node name="CardsLabel" type="Label" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin/VBox" unique_id=211311048]
+layout_mode = 2
+text = "卡牌组合"
+horizontal_alignment = 1
+
+[node name="ResultScroll" type="ScrollContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Content" type="VBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin/VBox/ResultScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="ResultTextLabel" type="RichTextLabel" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin/VBox/ResultScroll/Content" unique_id=1320326889]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+text = "结果文案..."
+fit_content = true
+scroll_active = false
+
+[node name="RecordCardSection" type="VBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin/VBox/ResultScroll/Content" unique_id=838010683]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="RecordEvidenceBtn" type="Button" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin/VBox/ResultScroll/Content/RecordCardSection" unique_id=884543056]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+text = "📋 记录为证据"
+
+[node name="RecordBlackmailBtn" type="Button" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin/VBox/ResultScroll/Content/RecordCardSection"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+text = "🔪 记录为黑料"
+
+[node name="SkipRecordBtn" type="Button" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin/VBox/ResultScroll/Content/RecordCardSection" unique_id=1891181515]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+text = "跳过"
+
+[node name="BlameSection" type="VBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin/VBox/ResultScroll/Content"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="BlameBtn" type="Button" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin/VBox/ResultScroll/Content/BlameSection"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 36)
+text = "使用嫁祸卡"
+
+[node name="BlameTargetList" type="VBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin/VBox/ResultScroll/Content/BlameSection"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="ScoutSection" type="VBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin/VBox/ResultScroll/Content"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ScoutBtn" type="Button" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin/VBox/ResultScroll/Content/ScoutSection"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 36)
+text = "侦察其他房间"
+
+[node name="ScoutRoomList" type="VBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin/VBox/ResultScroll/Content/ScoutSection"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="ScoutResultLabel" type="RichTextLabel" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin/VBox/ResultScroll/Content/ScoutSection"]
+visible = false
+layout_mode = 2
+custom_minimum_size = Vector2(0, 80)
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="RecordScoutBtn" type="Button" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin/VBox/ResultScroll/Content/ScoutSection"]
+visible = false
+layout_mode = 2
+custom_minimum_size = Vector2(0, 36)
+text = "记录侦察内容"
+
+[node name="BlackmailSection" type="VBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin/VBox/ResultScroll/Content"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="BlackmailBtn" type="Button" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin/VBox/ResultScroll/Content/BlackmailSection"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 36)
+text = "使用致命小黑历"
+
+[node name="BlackmailCardList" type="VBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin/VBox/ResultScroll/Content/BlackmailSection"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="BlackmailTargetList" type="VBoxContainer" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin/VBox/ResultScroll/Content/BlackmailSection"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="BlackmailResultLabel" type="RichTextLabel" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin/VBox/ResultScroll/Content/BlackmailSection"]
+visible = false
+layout_mode = 2
+custom_minimum_size = Vector2(0, 60)
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="ContinueBtn" type="Button" parent="WorkingUI/Margin/VBox/MainContent/EventContentPanel/EventPopup/ResultPanel/Margin/VBox" unique_id=1220741956]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "继续"
+
+[node name="VotingUI" type="Control" parent="." unique_id=2008943411]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_voteui")
+
+[node name="Margin" type="MarginContainer" parent="VotingUI" unique_id=762709812]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 30
+
+[node name="VBox" type="VBoxContainer" parent="VotingUI/Margin" unique_id=1929257560]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="VotingUI/Margin/VBox" unique_id=1409781942]
+layout_mode = 2
+text = "投票环节"
+horizontal_alignment = 1
+
+[node name="HintLabel" type="Label" parent="VotingUI/Margin/VBox" unique_id=1306744745]
+layout_mode = 2
+text = "选出最可疑的人"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CandidateList" type="VBoxContainer" parent="VotingUI/Margin/VBox" unique_id=2110615316]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ResultSection" type="VBoxContainer" parent="VotingUI/Margin/VBox" unique_id=1935878851]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="TallyLabel" type="RichTextLabel" parent="VotingUI/Margin/VBox/ResultSection" unique_id=358106429]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="OutcomeLabel" type="RichTextLabel" parent="VotingUI/Margin/VBox/ResultSection" unique_id=102429508]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="VoteContinueBtn" type="Button" parent="VotingUI/Margin/VBox/ResultSection" unique_id=1139304530]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "继续"
+
+[node name="NightUI" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_nightui")
+
+[node name="Margin" type="MarginContainer" parent="NightUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="NightUI/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="NightTitleLabel" type="Label" parent="NightUI/Margin/VBox"]
+layout_mode = 2
+text = "夜间"
+horizontal_alignment = 1
+
+[node name="NightMessageLabel" type="RichTextLabel" parent="NightUI/Margin/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 60)
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="ButtonBar" type="HBoxContainer" parent="NightUI/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="SpyBtn" type="Button" parent="NightUI/Margin/VBox/ButtonBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 40)
+text = "监听群聊"
+
+[node name="NextDayBtn" type="Button" parent="NightUI/Margin/VBox/ButtonBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 40)
+text = "迎接新的一天"
+
+[node name="ChatPanel" type="VBoxContainer" parent="NightUI/Margin/VBox"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="ChatContent" type="RichTextLabel" parent="NightUI/Margin/VBox/ChatPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+custom_minimum_size = Vector2(0, 200)
+bbcode_enabled = true
+scroll_active = true
+
+[node name="RecordChatBtn" type="Button" parent="NightUI/Margin/VBox/ChatPanel"]
+visible = false
+layout_mode = 2
+custom_minimum_size = Vector2(0, 36)
+text = "记录对话"
+
+[node name="ShopUI" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_shopui")
+
+[node name="Dim" type="ColorRect" parent="ShopUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="Margin" type="MarginContainer" parent="ShopUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 30
+
+[node name="VBox" type="VBoxContainer" parent="ShopUI/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ShopTitle" type="Label" parent="ShopUI/Margin/VBox"]
+layout_mode = 2
+text = "商城"
+horizontal_alignment = 1
+
+[node name="GoldLabel" type="Label" parent="ShopUI/Margin/VBox"]
+layout_mode = 2
+text = "持有金币：0"
+horizontal_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="ShopUI/Margin/VBox"]
+layout_mode = 2
+text = ""
+horizontal_alignment = 1
+
+[node name="ItemList" type="VBoxContainer" parent="ShopUI/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="CloseBtn" type="Button" parent="ShopUI/Margin/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "关闭商城"

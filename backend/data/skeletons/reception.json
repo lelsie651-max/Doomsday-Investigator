@@ -1,0 +1,182 @@
+{
+    "task_reception_001": {
+        "duo": [
+            {
+                "id": "SKL_RECEPTION_001",
+                "room": "reception",
+                "skeleton": "\n场景核心：{primary_npc}正在{action}，但面前的{object}显然已经{gone_wrong}。\n冲突点：你停下脚步，{primary_npc}却坚持说这完全是为了展示{absurd_logic}。\n升级：为了进一步优化对外形象，{primary_npc}打算立刻{escalation}。\n结尾困境：{primary_npc}突然把东西推向你，整个大厅瞬间安静，等待你的反应。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            },
+            {
+                "id": "SKL_RECEPTION_EV_002",
+                "room": "reception",
+                "skeleton": "\n场景核心：{primary_npc}正在对展示用的{evidence_object}进行{evidence_action}，尽管它已经{evidence_gone_wrong}。\n冲突点：你提出质疑，{primary_npc}理直气壮地表示这恰好体现了{absurd_logic}。\n升级：为了让外人信服，{primary_npc}打算当场{escalation}。\n结尾困境：{primary_npc}将物品重重地拍在你面前，整个空间仿佛凝固，就看你怎么接招。\n{bystander_note}\n",
+                "evidence_type": "product_fake",
+                "evidence_hint": "让NPC不小心提到给发霉的对外展示品喷漆、涂改体验装的生产日期、或试图掩盖展示品上的可疑牙印。"
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_RECEPTION_001",
+                "skeleton": "\\n场景核心：你独自执行「接待访客」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "reception"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_RECEPTION_001",
+                "skeleton": "\\n场景核心：你正在处理「接待访客」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "reception"
+            }
+        ]
+    },
+    "task_reception_002": {
+        "duo": [
+            {
+                "id": "SKL_RECEPTION_002",
+                "room": "reception",
+                "skeleton": "\n场景核心：{primary_npc}和另一名同事正因为{conflict_topic}发生争执。\n对立面：{primary_npc}强调必须遵循{stance_a}，对方则用{stance_b}反驳。\n升级：双方互不相让，冲突从{verbal_level}恶化为{physical_level}。\n结尾困境：两人突然同时停手，齐刷刷地转过头盯着你，似乎在等你来打破僵局。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            },
+            {
+                "id": "SKL_RECEPTION_005",
+                "room": "reception",
+                "skeleton": "\n场景核心：{primary_npc}拿着{object}拦住了你，它看起来已经{gone_wrong}。\n冲突点：面对这种异状，{primary_npc}坚信这是{absurd_logic}。\n升级：作为所谓的接待处新规矩，{primary_npc}提议{escalation}。\n结尾困境：{primary_npc}双手抱胸，目光死死锁住你，等待你的答复。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_RECEPTION_002",
+                "skeleton": "\\n场景核心：你独自执行「签收快递」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "reception"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_RECEPTION_002",
+                "skeleton": "\\n场景核心：你正在处理「签收快递」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "reception"
+            }
+        ]
+    },
+    "task_reception_003": {
+        "duo": [
+            {
+                "id": "SKL_RECEPTION_EV_001",
+                "room": "reception",
+                "skeleton": "\n场景核心：{primary_npc}正在悄悄{evidence_action}，没留意{evidence_object}出现了{evidence_gone_wrong}。\n冲突点：面对你的注视，{primary_npc}毫无反应，声称这属于{absurd_logic}。\n升级：为了把这笔账抹平，{primary_npc}暗示可以{escalation}。\n结尾困境：{primary_npc}走近你，压低了声音，将选择的重压完全抛给了你。\n{bystander_note}\n",
+                "evidence_type": "corruption",
+                "evidence_hint": "让NPC在对话中自然流露出私扣外来幸存者的物资、倒卖访客通行证、或与外围走私队暗中交易的细节。"
+            },
+            {
+                "id": "SKL_RECEPTION_006",
+                "room": "reception",
+                "skeleton": "\n场景核心：一场关于{conflict_topic}的讨论在{primary_npc}和另一人之间变成了互相推诿。\n对立面：{primary_npc}抛出{stance_a}，对方则以{stance_b}回击。\n升级：矛盾激化，两人的动作从{verbal_level}滑向了{physical_level}。\n结尾困境：某样东西掉落的声音让两人停手，他们一言不发地注视着你，等你出牌。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_RECEPTION_003",
+                "skeleton": "\\n场景核心：你独自执行「接听前台电话」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "reception"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_RECEPTION_003",
+                "skeleton": "\\n场景核心：你正在处理「接听前台电话」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "reception"
+            }
+        ]
+    },
+    "task_reception_004": {
+        "duo": [
+            {
+                "id": "SKL_RECEPTION_003",
+                "room": "reception",
+                "skeleton": "\n场景核心：{primary_npc}正试图掩饰{object}已经{gone_wrong}的事实。\n冲突点：你指出其中的问题，{primary_npc}却用{absurd_logic}来辩解。\n升级：为了彻底落实这项工作，{primary_npc}决定接下来要{escalation}。\n结尾困境：{primary_npc}直勾勾地盯着你，封死了你的退路，等待你的表态。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            },
+            {
+                "id": "SKL_RECEPTION_EV_003",
+                "room": "reception",
+                "skeleton": "\n场景核心：{primary_npc}试图{evidence_action}，却直接引发了{evidence_object}的{evidence_gone_wrong}。\n冲突点：{primary_npc}不仅不慌，还认为这属于{absurd_logic}。\n升级：为了省下维修经费，{primary_npc}决定{escalation}。\n结尾困境：{primary_npc}拍了拍手，转过身来直视你的眼睛，把难题留给了你。\n{bystander_note}\n",
+                "evidence_type": "safety_hazard",
+                "evidence_hint": "暗示NPC正在掩盖大门防弹玻璃的裂缝、关闭红外报警器省电、或是故意留下安全通道的漏洞不修。"
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_RECEPTION_004",
+                "skeleton": "\\n场景核心：你独自执行「引导客户参观」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "reception"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_RECEPTION_004",
+                "skeleton": "\\n场景核心：你正在处理「引导客户参观」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "reception"
+            }
+        ]
+    },
+    "task_reception_005": {
+        "duo": [
+            {
+                "id": "SKL_RECEPTION_004",
+                "room": "reception",
+                "skeleton": "\n场景核心：围绕着{conflict_topic}，{primary_npc}与同事陷入了对峙。\n对立面：{primary_npc}主张{stance_a}，而同事则搬出{stance_b}。\n升级：沟通失效，两人的行为从{verbal_level}升级成了{physical_level}。\n结尾困境：大门外传来一阵异响打断了他们，两人同时看向你，等待你的动作。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            },
+            {
+                "id": "SKL_RECEPTION_007",
+                "room": "reception",
+                "skeleton": "\n场景核心：{primary_npc}正在对着{object}不停地{action}，导致其彻底{gone_wrong}。\n冲突点：你发出声音，{primary_npc}转过头解释说这是为了实现{absurd_logic}。\n升级：似乎觉得这样还不够，{primary_npc}下一步准备{escalation}。\n结尾困境：{primary_npc}突然停手，将某个物件塞进你手里，他在等你的反应。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_RECEPTION_005",
+                "skeleton": "\\n场景核心：你独自执行「整理前台资料」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "reception"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_RECEPTION_005",
+                "skeleton": "\\n场景核心：你正在处理「整理前台资料」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "reception"
+            }
+        ]
+    }
+}

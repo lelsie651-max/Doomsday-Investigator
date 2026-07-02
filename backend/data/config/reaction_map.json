@@ -1,0 +1,22 @@
+{
+  "好感上升": {
+    "affinity_delta": [5, 10],
+    "suspicion_delta": [0, 0]
+  },
+  "好感下降": {
+    "affinity_delta": [-10, -5],
+    "suspicion_delta": [0, 0]
+  },
+  "怀疑加深": {
+    "affinity_delta": [0, 0],
+    "suspicion_delta": [5, 10]
+  },
+  "怀疑减轻": {
+    "affinity_delta": [0, 0],
+    "suspicion_delta": [-10, -5]
+  },
+  "无变化": {
+    "affinity_delta": [0, 0],
+    "suspicion_delta": [0, 0]
+  }
+}

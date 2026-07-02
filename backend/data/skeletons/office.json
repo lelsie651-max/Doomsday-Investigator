@@ -1,0 +1,248 @@
+{
+    "task_office_001": {
+        "duo": [
+            {
+                "id": "SKL_OFFICE_001",
+                "room": "office",
+                "skeleton": "\n场景核心：{primary_npc}正在{action}，而{object}已经{gone_wrong}。\n冲突点：你指出这个问题，{primary_npc}却坚持认为这是{absurd_logic}。\n升级：为了把事情推进下去，{primary_npc}决定{escalation}。\n结尾困境：{primary_npc}将这个烂摊子推到你面前，死死盯着你，等待你的表态。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            },
+            {
+                "id": "SKL_OFFICE_EV_003",
+                "room": "office",
+                "skeleton": "\n场景核心：{primary_npc}正在{evidence_action}，没注意到{evidence_object}已经{evidence_gone_wrong}。\n冲突点：你恰好目睹了这一幕，{primary_npc}却平静地用{absurd_logic}来解释过去。\n升级：为了堵住可能走漏的风声，{primary_npc}准备当场{escalation}。\n结尾困境：{primary_npc}缓缓向你走来，一言不发地看着你的眼睛，把压力完全抛给了你。\n{bystander_note}\n",
+                "evidence_type": "corruption",
+                "evidence_hint": "让NPC在试图圆谎时，无意中暴露出私吞高管专属物资、与外部走私团队对接或收受贿赂的细节。"
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_OFFICE_001",
+                "skeleton": "\\n场景核心：你独自执行「处理客户询盘」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "office"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_OFFICE_001",
+                "skeleton": "\\n场景核心：你正在处理「处理客户询盘」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "office"
+            }
+        ]
+    },
+    "task_office_002": {
+        "duo": [
+            {
+                "id": "SKL_OFFICE_002",
+                "room": "office",
+                "skeleton": "\n场景核心：{primary_npc}和另一名同事正围绕{conflict_topic}发生争执。\n对立面：{primary_npc}主张{stance_a}，另一方则坚持{stance_b}。\n升级：双方的摩擦从{verbal_level}直接演变成了{physical_level}。\n结尾困境：他们突然同时停止动作，齐刷刷地转过头盯着你，似乎在等待你来打破僵局。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            },
+            {
+                "id": "SKL_OFFICE_007",
+                "room": "office",
+                "skeleton": "\n场景核心：{primary_npc}与另一人正就{conflict_topic}展开激烈的交锋。\n对立面：{primary_npc}坚决拥护{stance_a}，而对方则以{stance_b}作为武器。\n升级：在毫无预兆的情况下，两人的交流从{verbal_level}滑落至{physical_level}。\n结尾困境：某个飞过来的物件正好砸在你的脚边，两人瞬间安静，齐刷刷地注视着你，等待你的动作。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_OFFICE_002",
+                "skeleton": "\\n场景核心：你独自执行「整理文件归档」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "office"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_OFFICE_002",
+                "skeleton": "\\n场景核心：你正在处理「整理文件归档」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "office"
+            }
+        ]
+    },
+    "task_office_003": {
+        "duo": [
+            {
+                "id": "SKL_OFFICE_003",
+                "room": "office",
+                "skeleton": "\n场景核心：{primary_npc}正在对{object}进行审查，因为它刚刚{gone_wrong}。\n冲突点：面对明显的异常，{primary_npc}用{absurd_logic}来解释这一现象。\n升级：随后，{primary_npc}掏出工具，准备进一步{escalation}。\n结尾困境：{primary_npc}突然停下手里的动作，转头看向你，似乎在要求你做出某种回应。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_OFFICE_003",
+                "skeleton": "\\n场景核心：你独自执行「回复客户邮件」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "office"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_OFFICE_003",
+                "skeleton": "\\n场景核心：你正在处理「回复客户邮件」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "office"
+            }
+        ]
+    },
+    "task_office_004": {
+        "duo": [
+            {
+                "id": "SKL_OFFICE_EV_001",
+                "room": "office",
+                "skeleton": "\n场景核心：{primary_npc}正在试图{evidence_action}，却没留意{evidence_object}出现了{evidence_gone_wrong}。\n冲突点：面对你的注视，{primary_npc}毫不避讳地表示这属于{absurd_logic}。\n升级：为了彻底消除隐患，{primary_npc}打算{escalation}。\n结尾困境：{primary_npc}把东西往桌上一拍，目光锁定在你身上，等待你的下一步动作。\n{bystander_note}\n",
+                "evidence_type": "finance_fake",
+                "evidence_hint": "让NPC在对话中不经意地提及阴阳合同、抹除发票零头或假公章等财务造假线索。"
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_OFFICE_004",
+                "skeleton": "\\n场景核心：你独自执行「制作销售报表」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "office"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_OFFICE_004",
+                "skeleton": "\\n场景核心：你正在处理「制作销售报表」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "office"
+            }
+        ]
+    },
+    "task_office_005": {
+        "duo": [
+            {
+                "id": "SKL_OFFICE_004",
+                "room": "office",
+                "skeleton": "\n场景核心：因为{conflict_topic}，{primary_npc}正试图从同事手里夺走某样东西。\n对立面：{primary_npc}用{stance_a}作为理由，而同事用{stance_b}反驳。\n升级：局势失控，两人的冲突从{verbal_level}恶化为{physical_level}。\n结尾困境：不知是谁不小心撞到了你，两人同时停手，气氛瞬间凝固，所有人都在看你会怎么做。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_OFFICE_005",
+                "skeleton": "\\n场景核心：你独自执行「更新产品目录」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "office"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_OFFICE_005",
+                "skeleton": "\\n场景核心：你正在处理「更新产品目录」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "office"
+            }
+        ]
+    },
+    "task_office_006": {
+        "duo": [
+            {
+                "id": "SKL_OFFICE_005",
+                "room": "office",
+                "skeleton": "\n场景核心：{primary_npc}拿着{object}拦住了你，它看起来已经{gone_wrong}。\n冲突点：{primary_npc}试图向你证明这是{absurd_logic}。\n升级：看你没有立刻表态，{primary_npc}表示马上就要{escalation}。\n结尾困境：{primary_npc}向前逼近了一步，封死了你的退路，直勾勾地盯着你等待答复。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_OFFICE_006",
+                "skeleton": "\\n场景核心：你独自执行「接听客户电话」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "office"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_OFFICE_006",
+                "skeleton": "\\n场景核心：你正在处理「接听客户电话」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "office"
+            }
+        ]
+    },
+    "task_office_007": {
+        "duo": [
+            {
+                "id": "SKL_OFFICE_EV_002",
+                "room": "office",
+                "skeleton": "\n场景核心：{primary_npc}正在进行{evidence_action}，而此时{evidence_object}已经{evidence_gone_wrong}。\n冲突点：{primary_npc}对这种情况毫无愧疚，甚至辩称这是{absurd_logic}。\n升级：紧接着，{primary_npc}宣布接下来要{escalation}。\n结尾困境：{primary_npc}将目光转向了站在一旁的你，整个空间的空气仿佛结冰，就看你怎么接招。\n{bystander_note}\n",
+                "evidence_type": "employee_abuse",
+                "evidence_hint": "让NPC在对话中自然流露出克扣抗毒血清、强迫带伤加班或把感染员工强制锁死在办公区域的细节。"
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_OFFICE_007",
+                "skeleton": "\\n场景核心：你独自执行「校对合同文本」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "office"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_OFFICE_007",
+                "skeleton": "\\n场景核心：你正在处理「校对合同文本」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "office"
+            }
+        ]
+    },
+    "task_office_008": {
+        "duo": [
+            {
+                "id": "SKL_OFFICE_006",
+                "room": "office",
+                "skeleton": "\n场景核心：{primary_npc}对着{object}不停地{action}，导致其彻底{gone_wrong}。\n冲突点：当你出声询问时，{primary_npc}搬出了{absurd_logic}的理论。\n升级：似乎觉得这样还不够，{primary_npc}下一步准备{escalation}。\n结尾困境：{primary_npc}突然把某个东西塞进你手里，周围安静了下来，他在等你的反应。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_OFFICE_008",
+                "skeleton": "\\n场景核心：你独自执行「录入客户信息」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "office"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_OFFICE_008",
+                "skeleton": "\\n场景核心：你正在处理「录入客户信息」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "office"
+            }
+        ]
+    }
+}

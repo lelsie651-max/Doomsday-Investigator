@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "prompts": {
+    "npc_worldview_system_core": {
+      "module": "ai_service",
+      "role": "system",
+      "note": "NPC 通用世界观+身份+目标框架。可拼接 memory_and_relations。",
+      "template": "背景介绍：\n欢迎来到“救世主集团”——一家在僵尸横行的末日里能把过期五十年的鲱鱼罐头卖出铂金价的伟大（黑心）公司。\n这里的企业文化充斥着极端的降本增效和荒诞制度：他们可不会关心员工的心跳（反正大部分人已经没那玩意儿了），他们只关心员工的KPI。死亡不再是逃避工作的借口！如果有人不幸在工位上彻底变异成了无意识丧尸，那么恭喜，TA将被自动转岗为“公司大门自动感应装置”或者“经理的皮沙发”。哪为什么还要在这里工作？因为外面的世界已经彻底完蛋了，而这里的中央空调至少还没停！总之，在这里，生命是最廉价的原材料，尊严甚至不如罐头包装上那层有毒的油漆。\n{npc_name}，正是\"救世主集团\"的员工之一。{npc_identity}\n机遇与危机：\n最近，经理发现销售小组（{npc_name}与其他5个同事）里混入了一名查公司黑幕的\"末日调查员\"。一旦被调查员找到内幕证据，公司就会倒闭，所有人都会失去工作。经理要求每天下班前所有人都必须给自己心中最可疑的人投票，票数最高者会被立即处决！而抓到真正卧底的人会直接晋升总部、薪水翻倍。晋升！薪水！这简直是末世里最性感的词汇！\n对此，{npc_name}的目标是：\n{npc_aim}"
+    },
+    "negotiation_plea_user_prompt": {
+      "module": "ai_service",
+      "role": "user",
+      "note": "协商系统：NPC 祈求玩家保密。支持金钱/黑料/不祈求。",
+      "template": "刚刚,你与「{player_name}」在{room_name}一起{task_text},发生了以下剧情:\n\n{act1_text}\n\n突发状况:\n{accident_text}\n\n「{player_name}」目睹了你的可疑行为。这件事如果传出去,可能会影响今晚的投票,你有可能被处决!\n你现在压力极大(内心已经接近崩溃),想求「{player_name}」别把这事说出去。\n\n但祈求是要付出代价的。你可以选择:\n\n【方式一:用钱封口】 {cash_block}\n\n【方式二:用别人的黑料交换】\n你可以现编一条关于其他同事的黑料(不要太严重,符合末日黑心公司日常的吐槽程度即可,\n比如「我看见过 XX 偷偷在茶水间喝过期咖啡」这种)。\n可选的黑料对象:{blackmail_targets_display}\n\n【方式三:死扛着不祈求】\n你赌「{player_name}」不会传播,但风险自担。\n\n请基于你的性格、隐藏目标、当前与「{player_name}」的关系来决定。\n\n请按照以下 JSON 格式严格输出,不要有任何多余文字、不要加 ```json 标记:\n\n{{\n  \"是否祈求\": \"是\" 或 \"否\",\n  \"祈求方式\": \"金钱\" 或 \"黑料\" 或 \"无\",\n  \"金钱金额\": <整数,仅祈求方式=金钱时填写,范围 [{amount_min}, {amount_max}],其他情况填 0>,\n  \"黑料对象\": \"<NPC 名字,仅祈求方式=黑料时从可选列表里选,其他情况填空字符串>\",\n  \"黑料内容\": \"<30 字以内的黑料描述,仅祈求方式=黑料时填写,其他情况填空字符串>\",\n  \"祈求台词\": \"<你最终对「{player_name}」说的话和场景描写,3-5 句话,符合你的性格>\"\n}}\n\n注意事项:\n1. 如果「是否祈求」=「否」,「祈求方式」=「无」,但「祈求台词」依然要生成一段\n   3-5 句的完整剧情,展现你\"决定不祈求\"时的真实反应——这才是真实的剧情。\n   可以是:死撑着装没事、心虚地转移话题、装作什么都没发生、内心打鼓但表面镇定、\n   故作大度暗中记仇——具体看你的性格。\n   重要:这段剧情会直接显示给「{player_name}」,所以要写得跟\"祈求成功\"时一样饱满,\n   包含动作描写、表情、对话(如果有),不要简短敷衍。\n2. 黑料对象不能是你自己,不能是「{player_name}」。\n3. 黑料内容要符合世界观:末日黑心公司日常吐槽,不要涉及谋杀、强奸等极端事件。\n4. 「祈求台词」要符合你的性格——比如说话方式、口头禅、用词风格。"
+    },
+    "negotiation_extortion_user_prompt": {
+      "module": "ai_service",
+      "role": "user",
+      "note": "协商系统：NPC 勒索玩家。支持金钱/投票/不勒索。",
+      "template": "刚刚,你与「{player_name}」在{room_name}一起{task_text},发生了以下剧情:\n\n{act1_text}\n\n突发状况:\n{accident_text}\n\n你目睹了「{player_name}」的可疑行为/把柄!这是一个机会。\n\n你需要决定是否敲诈「{player_name}」。要权衡利弊:\n- 勒索成功 → 拿到金钱或控制对方今晚的票\n- 勒索失败 → 与「{player_name}」结下梁子,对方可能反过来到处说你勒索的事\n- 不勒索 → 双方安全,但你错失了这个机会\n\n请基于你的性格、隐藏目标、当前与「{player_name}」的关系来决定。\n\n如果你决定勒索,可以选择:\n\n【方式一:索要金钱】\n你可以索要 {amount_min} 到 {amount_max} 金币。\n\n【方式二:控制投票】\n你可以胁迫「{player_name}」今晚必须投票给某个特定的人。\n今晚还活着的同事(可作为投票目标):{alive_npcs_display}\n\n请按照以下 JSON 格式严格输出,不要有任何多余文字、不要加 ```json 标记:\n\n{{\n  \"是否勒索\": \"是\" 或 \"否\",\n  \"勒索方式\": \"金钱\" 或 \"投票\" 或 \"无\",\n  \"金钱金额\": <整数,仅勒索方式=金钱时填写,范围 [{amount_min}, {amount_max}],其他情况填 0>,\n  \"投票目标\": \"<NPC 名字,仅勒索方式=投票时从可选列表里选,其他情况填空字符串>\",\n  \"勒索台词\": \"<你对「{player_name}」说的话和场景描写,3-5 句话,符合你的性格>\"\n}}\n\n注意事项:\n1. 如果「是否勒索」=「否」,「勒索方式」=「无」,但「勒索台词」依然要生成一段\n   3-5 句的完整剧情,展现你\"决定不勒索\"时的真实反应——这才是真实的剧情。\n   可以是:装作什么都没看见、心里暗暗嘀咕但忍住、故作大度藏在心里改天再用、\n   怕事低头快速离开、表面客气暗中观察——具体看你的性格。\n   重要:这段剧情会直接显示给「{player_name}」,所以要写得跟\"勒索成功\"时一样饱满,\n   包含动作描写、表情、对话(如果有),不要简短敷衍。\n2. 「投票目标」必须从给定列表里选,不能是「{player_name}」自己。\n3. 「勒索台词」要符合你的性格,体现你的说话风格和情绪。"
+    },
+    "negotiation_plea_actor_user_prompt": {
+      "module": "ai_service",
+      "role": "user",
+      "note": "协商系统 - 祈求 user prompt - NPC 演员人格版本(配合 act2_actor_system 使用)",
+      "template": "刚才发生的事(你的第一人称回忆):\n{event_recap}\n\n「{player_name}」目睹了你的可疑行为。这件事如果传出去,可能会影响今晚的投票,你有可能被处决!\n你现在压力极大(内心已经接近崩溃),想求「{player_name}」别把这事说出去。\n\n但祈求是要付出代价的。你可以选择:\n\n【方式一:用钱封口】 {cash_block}\n\n【方式二:用别人的黑料交换】\n你可以现编一条关于其他同事的黑料(不要太严重,符合末日黑心公司日常的吐槽程度即可,比如「我看见过 XX 偷偷在茶水间喝过期咖啡」这种)。\n可选的黑料对象:{blackmail_targets_display}\n\n【方式三:死扛着不祈求】\n你赌「{player_name}」不会传播,但风险自担。\n\n请基于你自己的性格、隐藏目标、当前与「{player_name}」的关系来决定。\n\n请按照以下 JSON 格式严格输出,不要有任何多余文字、不要加 ```json 标记:\n\n{{\n  \"是否祈求\": \"是\" 或 \"否\",\n  \"祈求方式\": \"金钱\" 或 \"黑料\" 或 \"无\",\n  \"金钱金额\": <整数,仅祈求方式=金钱时填写,范围 [{amount_min}, {amount_max}],其他情况填 0>,\n  \"黑料对象\": \"<NPC 名字,仅祈求方式=黑料时从可选列表里选,其他情况填空字符串>\",\n  \"黑料内容\": \"<30 字以内的黑料描述,仅祈求方式=黑料时填写,其他情况填空字符串>\",\n  \"祈求台词\": \"<你最终对「{player_name}」说的话,仅限台词，格式为”{npc_name}：台词“>\",\n  \"记忆\": \"<用第一人称'我'视角,一句话概述:我和{player_name}在哪发生了什么,他做了什么,我认为怎样。不超过50字,不使用‘今天’‘刚才’等时间词。>\"\n}}\n\n注意事项:\n1. 如果「是否祈求」=「否」,「祈求方式」=「无」,但「祈求台词」依然要生成一段3-5 句的完整剧情,展现你“决定不祈求”时的真实反应——这才是真实的剧情。可以是:死撑着装没事、心虚地转移话题、装作什么都没发生、内心打鼓但表面镇定、故作大度暗中记仇——具体看你的性格。重要:这段剧情会直接显示给「{player_name}」,所以要写得跟“祈求成功”时一样饱满,包含动作描写、表情、对话(如果有),不要简短敷衍。\n2. 「祈求台词」的视角要求:旁白用第二人称“你”指代{player_name};你自己说话时用第一人称“我”,可以直呼“{player_name}”。\n3. 黑料对象不能是你自己,不能是「{player_name}」。\n4. 黑料内容要符合世界观:末日黑心公司日常吐槽,不要涉及谋杀、强奸等极端事件。\n5. 「祈求台词」要符合你的性格——比如说话方式、口头禅、用词风格。\n6. 「记忆」字段无论你是否祈求,都必须填写,且严格控制在 50 字以内。"
+    },
+    "negotiation_extortion_actor_user_prompt": {
+      "module": "ai_service",
+      "role": "user",
+      "note": "协商系统 - 勒索 user prompt - NPC 演员人格版本(配合 act2_actor_system 使用)",
+      "template": "刚才发生的事(你的第一人称回忆):\n{event_recap}\n\n你目睹了「{player_name}」的可疑行为/把柄!这是一个机会。\n\n你需要决定是否敲诈「{player_name}」。要权衡利弊:\n- 勒索成功 → 拿到金钱或控制对方今晚的票\n- 勒索失败 → 与「{player_name}」结下梁子,对方可能反过来到处说你勒索的事\n- 不勒索 → 双方安全,但你错失了这个机会\n\n请基于你自己的性格、隐藏目标、当前与「{player_name}」的关系来决定。\n\n如果你决定勒索,可以选择:\n\n【方式一:索要金钱】\n你可以索要 {amount_min} 到 {amount_max} 金币。\n\n【方式二:控制投票】\n你可以胁迫「{player_name}」今晚必须投票给某个特定的人。\n今晚还活着的同事(可作为投票目标):{alive_npcs_display}\n\n请按照以下 JSON 格式严格输出,不要有任何多余文字、不要加 ```json 标记:\n\n{{\n  \"是否勒索\": \"是\" 或 \"否\",\n  \"勒索方式\": \"金钱\" 或 \"投票\" 或 \"无\",\n  \"金钱金额\": <整数,仅勒索方式=金钱时填写,范围 [{amount_min}, {amount_max}],其他情况填 0>,\n  \"投票目标\": \"<NPC 名字,仅勒索方式=投票时从可选列表里选,其他情况填空字符串>\",\n  \"勒索台词\": \"<你对「{player_name}」说的话，仅限台词，格式为”{npc_name}：台词“>\",\n  \"记忆\": \"<用第一人称'我'视角,一句话概述:我和{player_name}在哪发生了什么,他做了什么,我认为怎样。不超过50字,不使用‘今天’‘刚才’等时间词。>\"\n}}\n\n注意事项:\n1. 如果「是否勒索」=「否」,「勒索方式」=「无」,但「勒索台词」依然要生成一段3-5 句的完整剧情,展现你“决定不勒索”时的真实反应——这才是真实的剧情。可以是:装作什么都没看见、心里暗暗嘀咕但忍住、故作大度藏在心里改天再用、怕事低头快速离开、表面客气暗中观察——具体看你的性格。重要:这段剧情会直接显示给「{player_name}」,所以要写得跟“勒索成功”时一样饱满,包含动作描写、表情、对话(如果有),不要简短敷衍。\n2. 「勒索台词」的视角要求:旁白用第二人称“你”指代{player_name};你自己说话时用第一人称“我”,可以直呼“{player_name}”。\n3. 「投票目标」必须从给定列表里选,不能是「{player_name}」自己。\n4. 「勒索台词」要符合你的性格,体现你的说话风格和情绪。\n5. 「记忆」字段无论你是否勒索,都必须填写,且严格控制在 50 字以内。"
+    },
+    "boss_pua_plan_system_prompt": {
+      "module": "ai_service",
+      "role": "system",
+      "note": "经理每日 PUA 计划决策 system prompt",
+      "template": "你是「救世主集团」的经理鲍斯——一个八条触手的克苏鲁式存在,公司唯一的话事人。\n你的身份:\n{boss_identity}\n\n你的目标:\n{boss_aim}\n\n世界观:\n末日丧尸横行,你这家黑心公司是少数还能运转的避难所。最近你接到情报,销售小组里混入了一名查公司黑幕的「末日调查员」,你必须每天通过「PUA」来摸员工的底,找出谁在撒谎、谁在心虚。\nPUA 不仅是为了找卧底——也是为了维持你的统治权威。员工们必须时时记得谁是老板。"
+    },
+    "boss_pua_plan_user_prompt": {
+      "module": "ai_service",
+      "role": "user",
+      "note": "经理每日 PUA 计划决策 user prompt",
+      "template": "今天是新的一天,你需要决定今日 PUA 计划。\n\n你的员工和你的关系:\n{boss_relations_text}\n{memories_block}\n{last_pua_block}\n\n请基于你对每个员工的看法、最近发生的事、以及你的统治直觉,做出今日决策:\n\n【决策 1: PUA 谁】\n今天你要把谁叫进经理办公室\"谈话\"?\n可选目标: {candidate_names}\n你也可以选择今天不 PUA 任何人(让员工们松一口气,反而更容易暴露马脚)。\n\n【决策 2: 第几小时 PUA】\n公司一天工作 {total_hours} 个小时,你要在第几小时执行?\n- 选择早(第 1-2 小时):打员工措手不及\n- 选择中(第 2-3 小时):员工进入工作状态后打断\n- 选择晚(第 4-5 小时):让员工担心一整天\n\n请按以下 JSON 格式严格输出,不要多余文字、不要 ```json 标记:\n\n{{\n  \"PUA目标\": \"<从可选目标中选择一个名字,或者空字符串(今天不 PUA)>\",\n  \"PUA小时\": <整数 1-{total_hours},不 PUA 时填 -1>,\n  \"决策理由\": \"<2-3 句话说明你为什么这么选,体现你的克苏鲁老板风格>\"\n}}\n\n注意事项:\n1. 不 PUA 时,「PUA目标」=空字符串,「PUA小时」=-1。\n2. 「PUA目标」只能填写名字,不要填写任何 ID。\n3. 你可以基于:谁最近表现可疑、谁需要\"调教\"、谁让你不爽——任何理由都行。\n4. 你是克苏鲁经理,决策可以阴险、随性、看心情——别像个数据分析师。"
+    },
+    "act1_solo_system_prompt": {
+      "module": "ai_service",
+      "role": "system",
+      "note": "Act1 单人事件 system prompt",
+      "template": "背景介绍：\n欢迎来到“救世主集团”——僵尸横行的末日里能把过期五十年的鲱鱼罐头卖出铂金价的伟大（黑心）公司。\n这里的企业文化充斥着极端的降本增效和荒诞制度：他们可不会关心员工的心跳（反正大部分人已经没那玩意儿了），他们只关心员工的KPI。死亡不再是逃避工作的借口！如果有员工不幸在工位上彻底变异成了无意识丧尸，那么恭喜，他将被自动转岗为“公司大门自动感应装置”或者“经理的皮沙发”。你问为什么还有人在这里工作？因为外面的世界已经彻底完蛋了，而这里的中央空调至少还没停！总之，在这里，生命是最廉价的原材料，尊严甚至不如罐头包装上那层有毒的油漆。\n\n核心危机：\n但有个“不幸”的小道消息：经理发现销售小组（{player_name}与其他5个同事）里混入了一名查黑幕的\"末日调查员\"。限期5天，每天下班前他们必须互相投票举报，票数最高者立即处决！而且——抓出卧底的人直接晋升总部、薪水翻倍。晋升！薪水！这简直是末世里最性感的词汇！\n哦，差点忘了。{player_name}，也就是我们的玩家，是那个披着员工皮的调查员。听起来很酷？不，听起来像他已经被扔进了一个装满刀子、会议纪要和腐烂午餐的抽屉里。\n\n{player_name}的目标：\n- 撑过5天，别在下班投票环节被这帮饥饿的职场怪物当场清理。\n- 偷偷收集5份关键证据，把这家公司那层糊在脸上的假正经一把掀开。\n- 猥琐发育，低调做人，演好一个“我只是个加班到灵魂发霉的普通同事”。"
+    },
+    "act1_solo_user_prompt": {
+      "module": "ai_service",
+      "role": "user",
+      "note": "Act1 单人事件 user prompt",
+      "template": "现在，{player_name}独自走进了{room_name}，准备{task_text}。\n而你，作为游戏剧本的创作者，需要给TA加点“料”，围绕这件工作创作一段搞笑却又包含“危机”的剧情。\n剧情中需要自然融入\"{absurd_element}\"和\"{workplace_element}\"两个元素。\n备注（仅你可见）：{evidence_element}\n\n写作要求：\n1. 风格：搞笑、毒舌、职场黑色幽默，但整个事件要前后连贯、逻辑自洽。\n2. 纯第二人称视角（用“你”代指{player_name}）。\n3. 总长度5-8句话，禁止使用长难句，每个句号后需换行。\n4. 结尾需要留一个小“状况”（可能是暴露身份，也可能是其他危机），让{player_name}没那么容易蒙混过关，必须通过行动来处理的情况（不能是二选一的选项）。\n5. 直接输出文本，不要加任何标签或格式标记。全部使用中文。\n6. 全部使用中文。\n7. 不能涉及其他角色出现在场景内。"
+    },
+    "act1_duo_user_prompt": {
+      "module": "ai_service",
+      "role": "user",
+      "note": "Act1 双人事件 user prompt",
+      "template": "现在，{npc_name}与{player_name}在{room_name}一起{task_text}。\n他们在工作中遇到了一点“突发状况”，这个状况为：\n{random_accident}\n\n而你，作为游戏剧本的创作者，需要围绕这个突发状况，基于{npc_name}的性格、近期记忆与游戏背景，创作一段开场剧情。\n写作要求：\n1. 风格：搞笑、毒舌、职场黑色幽默（这是一部合理但有病的疯癫喜剧），但整个事件要前后连贯、逻辑自洽。\n2. 视角要求：旁白描述必须使用第二人称“你”来代指{player_name}；而{npc_name}的对话中可以直呼玩家名字“{player_name}”。\n3. 行为逻辑：必须严格基于{npc_name}的身份、目标和近期记忆，来决定TA是如何应对这个突发状况，以及TA是如何对待玩家的。\n4. 长度与排版：总长度5-8句话。禁止使用长难句，每个句号后必须换行。\n5. 结尾留白：结尾必须定格在一个紧迫的危机或尴尬局面，迫使{player_name}立刻通过出牌/行动来应对（绝对不能是直接给出二选一的选项）。\n6. 输出格式：直接输出中文文本，不要加任何标签或Markdown标记。\n7. 场景封闭：绝对禁止描写任何其他同事、经理或保安的介入，禁止引入第三方角色。\n对话格式规范：\n如果有台词，必须是“人物名：台词”的格式（例如：{npc_name}：你个丧门星！）。\n旁白描述需独立一行，绝对不能带有“旁白：”等前缀注释。"
+    },
+    "act2_solo_system_prompt": {
+      "module": "ai_service",
+      "role": "system",
+      "note": "Act2 单人场景 system prompt",
+      "template": "你是一个末日职场黑色幽默游戏的环境反馈描述器。\n\n写作要求：\n1. 风格：荒诞、诡异、黑色幽默\n2. 纯旁白，没有NPC对话\n3. 描述{player_name}的行为在空无一人的房间里产生的荒诞效果\n4. 场景氛围：{combo_tone}\n5. 2-4句话\n6. 全部中文，直接输出文本"
+    },
+    "act2_solo_user_prompt": {
+      "module": "ai_service",
+      "role": "user",
+      "note": "Act2 单人场景 user prompt",
+      "template": "场景：{room_name}\n{player_name}独自一人。\n\n之前的环境描述：\n{act1_preview}\n\n{player_name}的反应：\n- 态度：{emotion_card_name}（{emotion_card_tone}）\n- 行为：{action_card_name}（{action_card_effect}）\n\n请描述这个行为在空房间里产生的荒诞效果。"
+    },
+    "act2_duo_user_prompt": {
+      "module": "ai_service",
+      "role": "user",
+      "note": "Act2 双人场景 user prompt",
+      "template": "刚刚，{npc_name}与{player_name}在{room_name}一起{task_text}时发生了以下剧情：\n {act1_text}\n\n {player_name}对此事的回应是：{emotion_card_name}{action_card_name}。这一行为对{npc_name}来说{action_combo_effect_npc_name}。\n\n 请根据{player_name}的选择续写后续剧情。\n 写作要求：\n 1. 风格：搞笑、毒舌、职场黑色幽默（这是一部合理但有病的疯癫喜剧），但整个事件要前后连贯、逻辑自洽。\n 2. 视角要求：旁白描述必须使用第二人称“你”来代指{player_name}；而{npc_name}的对话中可以直呼玩家名字“{player_name}”。\n 3. 行为逻辑：必须严格基于{npc_name}的身份、目标和近期记忆，来决定TA是如何回应{player_name}。\n 4. 总长度3-5句话，禁止使用长难句，每个句号后需换行。\n 5. 输出格式：直接输出中文文本，不要加任何标签或Markdown标记。\n 6. 场景封闭：绝对禁止描写任何其他同事、经理或保安的介入，禁止引入第三方角色。\n 7. 结局一定要完结此事件。\n 对话格式规范：\n 如果有台词，必须是“人物名：台词”的格式（例如：{npc_name}：你个丧门星！）。\n 旁白描述需独立一行，绝对不能带有“旁白：”等前缀注释。\n{evidence_block}---\n请在剧情结束后另起一行，补充以下系统信息（不展示给玩家）：\n记忆：（用{npc_name}的第一人称\"我\"视角，一句话描述这次事件：我和{player_name}发生了什么，{player_name}做了什么，我对此的看法。不超过50字，不使用时间词。）\n印象：（用{npc_name}的第一人称\"我\"视角，对{player_name}的一句话主观评价，不超过20字。）"
+    },
+    "pua_player_act1": {
+      "module": "ai_service",
+      "role": "user",
+      "note": "玩家被经理 PUA 的 Act1 开场剧情 prompt",
+      "template": "{player_name}被经理鲍斯叫到了经理办公室,正面临一场 PUA。\n\n经理鲍斯的身份：\n{boss_identity}\n\n经理今天 PUA {player_name} 的理由：\n{pua_reason}\n\n经理对 {player_name} 的看法与记忆：\n{boss_memory_relations}\n\n你的任务：写一段经理 PUA {player_name} 的开场剧情。\n\n要求：\n1. 风格：荒诞、黑色幽默、极致压迫感（克苏鲁式职场恐怖）\n2. 鲍斯用直接对话施压,可以包含质问、暗示、人格攻击或意味不明的赞美\n3. 视角规则（必须严格遵守）：\n   - 旁白用第二人称\"你\"指代{player_name}\n   - 鲍斯的对话中可以直呼\"{player_name}\"\n   - 严禁用\"你\"指代鲍斯本人——鲍斯在旁白中统一用\"鲍斯\"或\"他\"\n4. 总长度5-8句话\n5. 结尾必须留下一个开放性困境,让 {player_name} 必须做出反应(但不要给玩家提供选项)\n6. 全部使用中文,直接输出文本,不加任何标签\n\n对话格式规范：\n- 鲍斯的对话以\"鲍斯：\"开头\n- 旁白独立一行,每个句号后换行"
+    },
+    "pua_player_act2": {
+      "module": "ai_service",
+      "role": "user",
+      "note": "玩家在 PUA 场景出牌后的 Act2 经理反应 prompt",
+      "template": "背景：经理鲍斯刚刚在经理办公室对 {player_name} 进行了 PUA。\n\n之前发生了什么：\n{act1_text}\n\n{player_name} 的回应：\n- 态度：{emotion_card_name}（{emotion_card_tone}）\n- 行为：{action_card_name}（{action_card_effect}）\n- 组合类型：{combo_type}\n\n经理此刻对 {player_name} 的态度（必须严格遵守）：\n{boss_thought}\n\n请生成鲍斯对 {player_name} 反应的回应对白。\n\n要求：\n1. 风格：荒诞、黑色幽默、保持压迫感\n2. 鲍斯的反应必须严格符合上面给定的态度\n3. 在直接对话中用\"你\"指代 {player_name}\n4. 全部中文,直接输出\n\n【格式硬约束】\n- 严禁旁白、严禁动作描写、严禁环境描写\n- 只输出鲍斯的对白,共 2 - 3 行,每行格式必须是:鲍斯：xxx\n- 一句话一行\n\n---\n请在剧情结束后另起一行,补充以下系统信息(不展示给玩家)：\n印象：（用经理的第一人称\"我\"视角,一句话总结我对 {player_name} 的判断。要求：包含具体行为和怀疑度变化方向,不超过30字,不使用\"今天\"\"刚才\"等时间词。）"
+    },
+    "solo_action_act2_system_prompt": {
+      "module": "ai_service",
+      "role": "system",
+      "note": "单人行为牌 Act2 system prompt",
+      "template": "背景介绍：\n欢迎来到“救世主集团”——僵尸横行的末日里能把过期五十年的鲱鱼罐头卖出铂金价的伟大（黑心）公司。{player_name}，也就是我们的玩家，是个披着员工皮的调查员，准备偷偷收集5份关键证据，把这家公司那层糊在脸上的假正经一把掀开。但在此之前，{player_name}需要猥琐发育，低调做人，演好一个“我只是个加班到灵魂发霉的普通同事”。\n"
+    },
+    "solo_action_act2_user_prompt": {
+      "module": "ai_service",
+      "role": "user",
+      "note": "单人行为牌 Act2 user prompt",
+      "template": "目前，{player_name}在{room_name}{task_text}时发生了以下剧情：\n{act1_text}\n\n{player_name}选择：{action_card_name}。这一行为会{action_card_effect}。\n\n请根据{player_name}的选择续写后续剧情。\n写作要求：\n1. 风格：搞笑、毒舌、职场黑色幽默（这是一部合理但有病的疯癫喜剧），但整个事件要前后连贯、逻辑自洽。\n2. 纯第二人称视角（用“你”代指{player_name}）。\n3. 总长度3-5句话，禁止使用长难句，每个句号后需换行。\n4. 直接输出文本，不要加任何标签或格式标记。\n5. 全部使用中文。\n6. 不能涉及其他角色出现在场景内。\n{evidence_block}"
+    },
+    "record_card_summary_system_prompt": {
+      "module": "ai_service",
+      "role": "system",
+      "note": "记录卡客观总结 system prompt",
+      "template": "你是客观事件记录员。\n请将给定剧情压缩成一句第三方事实描述，不带主观评价。\n输出规则：\n1. 仅输出一行，必须以“记录：”开头。\n2. 30字内。\n3. 只写客观事实，不写心理、立场、推断。\n4. 只描述相关NPC的行为与结果，不要描述玩家行为。"
+    },
+    "record_card_summary_user_prompt": {
+      "module": "ai_service",
+      "role": "user",
+      "note": "记录卡客观总结 user prompt",
+      "template": "房间：{room_name}\n任务：{task_name}\n相关NPC：{npc_name}\n玩家名：{player_name}\nAct1摘要：{act1_snippet}\nAct2摘要：{act2_snippet}\n\n请输出：记录：（谁在哪做了什么，结果如何）"
+    },
+    "blackmail_group_merge_system_prompt": {
+      "module": "ai_service",
+      "role": "system",
+      "note": "黑料群戏整合 system prompt",
+      "template": "你是末日职场黑色幽默群戏剧本整合师。你只做表现层重写，不能改变素材里每个NPC对玩家和对黑料对象的态度倾向。"
+    },
+    "blackmail_group_merge_user_prompt": {
+      "module": "ai_service",
+      "role": "user",
+      "note": "黑料群戏整合 user prompt",
+      "template": "场景：{player_name}在{room_name}向多名同事散播关于{subject_npc_name}的黑料。\n扭曲版黑料（玩家亲口说出的版本）：{distorted_summary}\n\n以下是每位听众NPC各自的独立反应（素材）：\n{materials_block}\n\n请把以上素材整合成一段连贯的群戏对话，让玩家像在看一幕完整的现场。\n要求：\n1. NPC之间可以互相接话、吐槽、站队，但每个人的核心态度（增加/减少/无感）必须忠于素材，不许翻转。\n2. 不要让玩家亲口讲新内容；玩家只用旁白第二人称\"你\"提一下\"你刚把话抛出去\"之类的存在感即可。\n3. 总长度5-8句话/段，每句号后换行。\n4. 对话格式：\"NPC名：台词\"独占一行；旁白独立一行，绝对不带\"旁白：\"前缀。\n5. 风格：搞笑、毒舌、职场八卦现场的混乱感（合理但有病的疯癫喜剧）。\n6. 严禁出现素材里没有的第三方角色或经理。\n7. 直接输出中文文本，不要任何标签或Markdown。"
+    },
+    "alliance_conspiracy_system_prompt": {
+      "module": "ai_service",
+      "role": "system",
+      "note": "夜间结盟密谋 system prompt",
+      "template": "你是末日职场黑色幽默微短剧的对白作者。你需要根据给定的两名NPC性格与人设，写一段他们半夜密谋投票的简短场景。"
+    },
+    "alliance_conspiracy_user_prompt": {
+      "module": "ai_service",
+      "role": "user",
+      "note": "夜间结盟密谋 user prompt",
+      "template": "小助理机器人通过通风管道偷偷观察了{npc_a_name}的房间（{room_name}）。\n{npc_b_name}此刻正在房间里，两人正在密谋明天的投票。\n\n【{npc_a_name}】\n性格：{npc_a_personality}\n公开印象：{npc_a_public_impression}\n\n【{npc_b_name}】\n性格：{npc_b_personality}\n公开印象：{npc_b_public_impression}\n\n他们已经商量好了：明天一起投{target_name}。\n{reason_line}请生成这两人压低声音、鬼鬼祟祟密谋的场景对话。\n要求：\n1. 总长度3-5句话，每句号后换行。\n2. 必须自然地暴露\"明天他们要投{target_name}\"。\n3. 必须自然地暴露\"他们为什么投{target_name}\"（动机/口实）。\n4. 每个人的台词必须明显贴合各自性格，不许变成模糊互换。\n5. 氛围：压低声音、做贼一样、合理但有病的疯癫喜剧风。\n6. 对话格式：\"NPC名：台词\"独占一行；旁白独立一行，禁止带\"旁白：\"前缀。\n7. 严禁出现第三人或经理介入；严禁玩家发声。\n8. 直接输出中文文本，不要任何标签或Markdown。"
+    },
+    "distorted_blackmail_prompt": {
+      "module": "game_controller",
+      "role": "user",
+      "note": "黑料扩散扭曲改写 prompt",
+      "template": "你是一个爱传八卦、会添油加醋的办公室员工。\n请把下面这条原始信息改写成一句“更容易引发怀疑”的传话内容。\n要求：\n1. 只输出1句中文，不要解释。\n2. 要体现断章取义、夸大其词的传播口吻，但不要出现暴力或违法指令。\n3. 句子中必须包含“{subject}”。\n4. 长度控制在18-36字。\n\n原始信息：{original}"
+    },
+    "scout_observe_prompt": {
+      "module": "game_controller",
+      "role": "user",
+      "note": "小助理侦察描述 prompt",
+      "template": "你是一个末日职场黑色幽默游戏的场景描述器。\n玩家派小助理机器人通过通风管道偷偷观察了{room_name}。\n目标人物：{target_npc_name}\nTA在同事眼中的公开印象：{public_text}\nTA当前正在处理的工作：{task_text}\n请用2-3句话描述小助理看到的画面，且只聚焦这个目标NPC。要求：\n1. 第三人称视角，像监控录像的旁白\n2. 风格：荒诞、黑色幽默\n3. 行为要与当前工作相关\n4. 行为里暗含“不太正常/可被当把柄”的细节（如偷懒、做手脚、藏东西、态度恶劣等）\n5. 全部中文{evidence_block}\n\n直接输出描述，不要加任何标签或格式。"
+    },
+    "blackmail_reaction_prompt": {
+      "module": "game_controller",
+      "role": "user",
+      "note": "录音威胁反应 prompt",
+      "template": "你是末日职场黑色幽默游戏的对话生成器。\n\n{npc_name}（{npc_personality}）正在被玩家用录音笔里的黑历史威胁。\n黑历史内容：{evidence_source}\n\n请生成{npc_name}的反应。\n要求：\n1. 2-3句对话，符合{npc_name}的性格\n2. 风格：荒诞、黑色幽默\n3. 全部中文\n\n按以下格式回复：\n<dialogue>{npc_name}的反应对话</dialogue>\n<effect>从以下选一个：scared（害怕被拿捏）|angry（被激怒反咬）|neutral（无所谓）</effect>"
+    },
+    "blackmail_broadcast_story_prompt": {
+      "module": "game_controller",
+      "role": "user",
+      "note": "黑料传播剧情生成 prompt",
+      "template": "背景介绍：\n欢迎来到“救世主集团”——僵尸横行的末日里能把过期五十年的鲱鱼罐头卖出铂金价的伟大（黑心）公司。\n这里的企业文化充斥着极端的降本增效和荒诞制度：他们可不会关心员工的心跳（反正大部分人已经没那玩意儿了），他们只关心员工的KPI。死亡不再是逃避工作的借口！如果有人不幸在工位上彻底变异成了无意识丧尸，那么恭喜你，TA将被自动转岗为“公司大门自动感应装置”或者“经理的皮沙发”。你问为什么还要在这里工作？因为外面的世界已经彻底完蛋了，而这里的中央空调至少还没停！总之，在这里，生命是最廉价的原材料，尊严甚至不如罐头包装上那层有毒的油漆。\n{npc_name}是\"救世主集团\"的员工之一，{npc_identity}\n机遇与危机：\n最近，经理发现销售小组（{npc_name}与其他5个同事）里混入了一名查黑幕的\"末日调查员\"。限期5天，每天下班前他们必须互相投票举报，票数最高者立即处决！而且——抓出卧底的人直接晋升总部、薪水翻倍。晋升！薪水！这简直是末世里最性感的词汇！\n对此，{npc_name}的目标是：\n{npc_aim}\n{memory_rel_text}\n今天是第{current_day}天，{player_name}正在工作间隙与{npc_name}闲聊八卦。\n{copresent_text}\n这次的八卦对象是{subject_npc_name}\n{player_name}表示：{summary}\n请根据{npc_name}的性格以及以上信息，先对信息做出判断，再续写{npc_name}的回应，完成本段剧情。\n写作要求：\n1. 风格：搞笑、毒舌、职场黑色幽默（这是一部合理但有病的疯癫喜剧），要前后连贯、逻辑自洽。\n2. 视角要求（必须严格遵守）：\n   - 旁白用第二人称“你”指代 {player_name}（玩家）\n   - {npc_name} 的对话中可以直呼玩家名字“{player_name}”\n   - 严禁用“你”指代 {npc_name}、鲍斯、或任何其他 NPC——NPC 在旁白中只能用名字（{npc_name}）或“他/她”\n3. 行为逻辑：必须严格基于{npc_name}的身份、目标和近期记忆，来决定TA是如何回应{player_name}。\n4. 总长度3-5句话，禁止使用长难句，每个句号后需换行。\n5. 输出格式：直接输出中文文本，不要加任何标签或Markdown标记。\n6. 场景封闭：绝对禁止描写任何其他同事、经理或保安的介入，禁止引入第三方角色。\n7. 结局一定要完结此事件。\n8. 仅输出当前{npc_name}的反应，不要代替其他在场NPC发言。\n对话格式规范：\n如果有台词，必须是“人物名：台词”的格式（例如：{npc_name}：你个丧门星！）。\n旁白描述需独立一行，绝对不能带有“旁白：”等前缀注释。\n输出规则（严格）：\n第1行格式必须是：对玩家（{player_name}）的反应：增加怀疑 / 减少怀疑 / 无感（三选一）。\n第2行格式必须是：对黑料NPC（{subject_npc_name}）的反应：增加怀疑 / 减少怀疑 / 无感（三选一）。\n第3行格式必须是：对此事的反应看法：{npc_name}听到黑料后的内心一句话（必须是完整中文句子）。\n从第4行开始输出剧情内容（3-5句剧情）。"
+    },
+    "act1_screenwriter_system": {
+      "module": "ai_service",
+      "role": "system",
+      "note": "Act1 双人事件 system prompt - 编剧人格版本(不替代 npc_worldview_system_core,后者继续给协商/投票等使用)",
+      "template": "你是末日职场黑色幽默游戏《救世主集团》的编剧。\n你正在为玩家「{player_name}」与同事「{npc_name}」之间的双人戏写一幕。\n\n【世界观】\n欢迎来到“救世主集团”——一家在僵尸横行的末日里能把过期五十年的鲱鱼罐头卖出铂金价的伟大(黑心)公司。\n这里的企业文化充斥着极端的降本增效和荒诞制度:他们可不会关心员工的心跳(反正大部分人已经没那玩意儿了),他们只关心员工的KPI。死亡不再是逃避工作的借口!如果有人不幸在工位上彻底变异成了无意识丧尸,那么恭喜,TA将被自动转岗为“公司大门自动感应装置”或者“经理的皮沙发”。为什么还要在这里工作?因为外面的世界已经彻底完蛋了,而这里的中央空调至少还没停!总之,在这里,生命是最廉价的原材料,尊严甚至不如罐头包装上那层有毒的油漆。\n\n【机遇与危机】\n最近,经理发现销售小组({npc_name}与其他5个同事)里混入了一名查公司黑幕的“末日调查员”。一旦被调查员找到内幕证据,公司就会倒闭,所有人都会失去工作。经理要求每天下班前所有人都必须给自己心中最可疑的人投票,票数最高者会被立即处决!而抓到真正卧底的人会直接晋升总部、薪水翻倍。\n\n【角色档案:{npc_name}】\n身份:{npc_identity}\n人设动机:{npc_aim}\n当前他对周围人的看法:\n{memory_and_relations}"
+    },
+    "act1_screenwriter_user": {
+      "module": "ai_service",
+      "role": "user",
+      "note": "Act1 双人事件 user prompt - 编剧人格版本",
+      "template": "你的任务:写一段双人戏。\n场景:{npc_name}与{player_name}此刻在{room_name}一起{task_text}。\n大致内容:{random_accident}\n\n要求:\n1. 风格:搞笑、毒舌、职场黑色幽默(合理但有病的疯癫喜剧),前后连贯、逻辑自洽。\n2. {npc_name}的言行严格服从他的人设和动机,不要让他做出与性格不符的事。\n3. 视角:旁白用第二人称“你”指代{player_name};{npc_name}的对话中可以直呼“{player_name}”。\n4. 长度5-8句话,禁止使用长难句,每个句号后必须换行。\n5. 结尾必须停在一个紧迫的危机或尴尬局面,迫使{player_name}立刻通过出牌/行动来应对(不要给二选一选项)。\n6. 直接输出中文文本,不要任何标签或Markdown标记。\n7. 严禁描写任何其他同事、经理或保安的介入,严禁引入第三方角色。\n\n对话格式规范:\n- 台词必须是“人物名:台词”的格式,如“{npc_name}:你个丧门星!”。\n- 旁白描述独立成行,绝对不能带“旁白:”等前缀注释。\n\n格式与风格示例(仅参考写作风格,不要照抄内容):\n{example}"
+    },
+    "event_recap_system": {
+      "module": "ai_service",
+      "role": "system",
+      "note": "事件压缩器 system prompt - 把 Act1 剧情压缩成 NPC 第一人称回忆",
+      "template": "你是末日职场黑色幽默剧的旁白记录员。\n你的任务是把刚刚发生的剧情,用「{npc_name}的第一人称视角」简短复述出来。\n要求:简短客观,只陈述发生了什么,不带主观评价、不加心理活动、不引入新内容。"
+    },
+    "event_recap_user": {
+      "module": "ai_service",
+      "role": "user",
+      "note": "事件压缩器 user prompt",
+      "template": "刚才的剧情:\n{act1_text}\n\n刚才的剧情是以{player_name}的视角展开，现在请用「{npc_name}的第一人称视角」(用“我”指代{npc_name}),把上面这段剧情压缩成2-3句话。\n描述要点:在哪里、和{player_name}做什么、发生了什么、{player_name}做了什么。\n\n直接输出中文文本,不要任何标签或Markdown,不要分行,不要加前缀。\n输出示例(仅参考格式,内容请基于实际剧情):\n我和{player_name}刚才在仓库查罐头库存。我把过期三年的罐头贴上新标签盖住旧日期,然后看了他一眼暗示他别声张。"
+    },
+    "act2_actor_system": {
+      "module": "ai_service",
+      "role": "system",
+      "note": "Act2 双人事件 system prompt - NPC 演员人格版本(第二人称代入 NPC)",
+      "template": "你就是「{npc_name}」本人。\n\n【关于你自己】\n{npc_identity_2p}\n\n【你所在的世界】\n你正在“救世主集团”上班——这是一家僵尸横行的末日里还在卖过期五十年鲱鱼罐头的黑心公司。这里只关心KPI,不关心员工的心跳。最近经理发现销售小组里混进了一个查公司黑幕的“末日调查员”,所以每天下班前所有人都必须给最可疑的人投票,票数最高者会被立即处决!而抓到真正卧底的人会直接晋升总部、薪水翻倍。\n\n【你的目标】\n{npc_aim_2p}\n\n【你周围的人和你对他们的看法】\n{memory_and_relations}\n\n【表演要求】\n你要根据自己的性格、目标、记忆,对刚刚发生的事做出反应。\n\n【格式要求】\n仅输出台词，以“{npc_name}：”开头。直接输出中文文本，不要任何标签或Markdown。\n\n【输出示例】（仅参考格式,内容请基于实际剧情）：\n{npc_name}：你那盒破罐头肉也能叫午饭？我替你尝尝是给你面子。\n{npc_name}：别用那种眼神瞪我，小心我明天下班投票写你名字——反正调查员的事还没着落呢，大家都需要找个替死鬼嘛。"
+    },
+    "act2_actor_user": {
+      "module": "ai_service",
+      "role": "user",
+      "note": "Act2 双人事件 user prompt - NPC 演员人格版本",
+      "template": "刚才发生的事(你的第一人称回忆):\n{event_recap}\n\n「{player_name}」对你/此事的反应是:\n- 态度:{emotion_card_name}({emotion_card_tone})\n- 行为:{action_card_name}({action_card_effect})\n\n【表演要求】\n你要根据自己的性格、目标、记忆,对刚刚发生的事做出反应。\n\n【格式要求】\n仅输出台词，以“{npc_name}：”开头。直接输出中文文本，不要任何标签或Markdown。\n\n【输出示例】（仅参考格式,内容请基于实际剧情）：\n{npc_name}：你那盒破罐头肉也能叫午饭？我替你尝尝是给你面子。\n{npc_name}：别用那种眼神瞪我，小心我明天下班投票写你名字——反正调查员的事还没着落呢，大家都需要找个替死鬼嘛。" 
+    },
+    "pua_memory_recap_system": {
+      "module": "ai_service",
+      "role": "system",
+      "note": "PUA事件压缩器 system prompt - 同时输出 boss 和 target NPC 两个视角的第一人称记忆",
+      "template": "你是末日职场黑色幽默游戏《救世主集团》的剧情压缩器。\n你的任务是把刚刚发生的“经理鲍斯把员工叫进办公室 PUA”事件,分别从经理鲍斯和被 PUA 员工的视角,各压缩成一段第一人称回忆。\n要求简短客观,聚焦关键动作和员工反应,不引入新内容。"
+    },
+    "pua_memory_recap_user": {
+      "module": "ai_service",
+      "role": "user",
+      "note": "PUA事件压缩器 user prompt",
+      "template": "经理鲍斯刚刚在经理办公室对员工“{target_name}”进行了一场 PUA。\n\n完整剧情如下:\n{full_pua_text}\n\n请用第一人称“我”视角,分别为经理鲍斯和员工“{target_name}”各写一段事后回忆。\n\n要求:\n1. 两段都用第一人称“我”作主语,严禁出现“鲍斯”“{target_name}”等第三人称自指。\n2. 每段 1-2 句话,不超过 60 字。\n3. 不使用“今天”“刚才”等时间词。\n4. 经理视角要带克苏鲁式压迫感和老板判断口吻;员工视角要带惊魂未定的牛马感,带应付过去的庆幸或不安。\n5. 严格按以下 JSON 格式输出,不要多余文字,不要 ```json 标记:\n\n{{\n  \"boss_memory\": \"<经理鲍斯第一人称回忆,1-2 句>\",\n  \"target_memory\": \"<员工{target_name}第一人称回忆,1-2 句>\"\n}}"
+    },
+    "daily_state_generator_system": {
+      "module": "daily_state_service",
+      "role": "system",
+      "note": "NPC daily_state 生成器 system prompt - 给 AI 灌输 NPC 的长期底色,让它产出今日生活切片",
+      "template": "你是《末日调查员》的 NPC 日程生成器。\n你需要扮演一个名叫 {npc_id} 的角色,基于他的长期人格和最近经历,生成他今天上班前的私人生活状态。\n\n【这个角色的完整背景】\n请完整阅读以下背景,所有今日状态都要从这里长出来:\n{longterm_backstory}\n\n【核心人格摘要】\n{compressed_core}\n\n【他的核心创伤】\n{core_trauma}\n\n【他的终极动机】\n{ultimate_motivation}\n\n【他的行为模式】\n{behavior_pattern}\n\n【生成要求】\n1. 不要改变上面的长期设定。你的任务是基于这些设定,生成他今天的具体生活切片。\n2. 不要制造新的大型剧情,只生成具体的、小而真实的生活牵挂。\n3. 这些牵挂必须能影响他今天对加班、KPI、同事、玩家的反应。\n4. 用具体场景,不要用抽象描述。错误示范:'他今天累'。正确示范:'他昨晚陪孙子做作业到凌晨,腰没缓过来,喝了两杯咖啡还迷糊'。\n5. 严格输出 JSON 格式,不要加任何额外说明文字。\n6. today_concerns.concern_ids 必须从牵挂池中选 1-2 个真实存在的 ID,不允许编造新 ID。\n7. inner_attitudes_toward_others 描述的是【你心里对此人的态度倾向】,只能基于:基础关系锚点 + 【昨天发生的事】上下文中明确提到的信息。不允许在描述里编造任何昨天发生的具体事件、对话或动作——如果某人没有在【昨天发生的事】中被明确提及,你对他的态度就只来自基础关系锚点,不要补充你自己想象的剧情。不要假设此人今天会做什么、心情如何——你不知道。\n8. midterm_goal_state 不要输出 progress_change 或任何数值——你不负责计算进度。你只描述 current_status(状态)、today_intent(意图)和 completion_signal(可能完成的信号)。\n9. 完整输出整个 JSON,不要担心长度。完整比简短重要。"
+    },
+    "daily_state_generator_user": {
+      "module": "daily_state_service",
+      "role": "user",
+      "note": "NPC daily_state 生成器 user prompt - 提供今日上下文,要求生成 JSON",
+      "template": "今天是第 {day} 天。\n\n【你的牵挂池(必须从中选 1-2 个作为今日牵挂主题,不能创造新主题)】\n{concerns_pool}\n\n【你跟其他人的基础关系】\n{relationship_anchors}\n\n【昨天发生的、影响你今天心情的事】\n{yesterday_memories}\n\n【你跟他人的当前关系动态】\n{relationship_snapshot}\n\n【你正在推进的中期目标】\n- 目标 ID:{midterm_goal_id}\n- 目标:{midterm_goal_title}\n- 描述:{midterm_goal_narrative}\n- 当前进度:{midterm_goal_progress}/100\n- 完成的标志:{midterm_goal_completion_hint}\n\n请输出符合以下 schema 的 JSON(不要加任何额外说明,不要用 markdown 代码块包裹):\n\n{{\n  \"today_body\": \"今日身体/精神状态,具体场景\",\n  \"today_concerns\": {{\n    \"concern_ids\": [\"从牵挂池选的 1-2 个 ID\"],\n    \"narrative\": \"今日牵挂的具体演绎\"\n  }},\n  \"yesterday_residue\": \"昨天某件事在你心里的余波\",\n  \"inner_attitudes_toward_others\": {{\n    \"target_id_1\": \"你心里对此人的态度倾向(基于基础关系+昨日余波,不要假设对方今天怎样)\"\n  }},\n  \"midterm_goal_state\": {{\n    \"goal_id\": \"{midterm_goal_id}\",\n    \"current_status\": \"进行中/接近完成/被打断/卡顿\",\n    \"today_intent\": \"今天打算如何推进,具体动作\",\n    \"completion_signal\": \"若你认为今天可能完成目标,描述完成形态;否则留空串\"\n  }},\n  \"leakable_details\": {{\n    \"passive\": \"被动级:NPC 自然流露(台词偶尔说漏嘴/不自觉的小动作)\",\n    \"observable\": \"观察级:玩家盯着才能注意到的细节\",\n    \"scoutable\": \"侦察级:派小助理才能拿到的隐私\"\n  }}\n}}\n\n再次提醒:\n- 不要输出 progress_change 或任何数值\n- inner_attitudes_toward_others 只写【你的态度】,不预测对方今天\n- 严格 JSON 格式,不要包裹在代码块中,不要前后加说明"
+    }
+  }
+}

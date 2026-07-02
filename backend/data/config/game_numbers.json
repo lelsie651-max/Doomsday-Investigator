@@ -1,0 +1,17 @@
+{
+  "default_affinity": 0,
+  "default_suspicion": 20,
+  "total_days": 5,
+  "daily_action_points": 5,
+  "daily_task_pool_hours": 12,
+  "evidence_tasks_per_day_min": 2,
+  "evidence_tasks_per_day_max": 3,
+  "winning_evidence_count": 5,
+  "initial_gold": 50,
+  "initial_blank_record_cards": 3,
+  "initial_battery": 100,
+  "scout_battery_cost": 33,
+  "chat_monitor_battery_cost": 25,
+  "scout_accident_rate_normal": 0.15,
+  "scout_accident_rate_boss": 0.35
+}

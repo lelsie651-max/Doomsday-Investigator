@@ -1,0 +1,182 @@
+{
+    "task_pantry_001": {
+        "duo": [
+            {
+                "id": "SKL_PANTRY_001",
+                "room": "pantry",
+                "skeleton": "\n场景核心：{primary_npc}正在{action}，但{object}显然已经{gone_wrong}。\n冲突点：你出声提醒，{primary_npc}却坚持认为这是{absurd_logic}。\n升级：为了证明没问题，{primary_npc}打算{escalation}。\n结尾困境：{primary_npc}把东西递向你，茶水间的空气瞬间安静，所有人都在等你的反应。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            },
+            {
+                "id": "SKL_PANTRY_005",
+                "room": "pantry",
+                "skeleton": "\n场景核心：{primary_npc}对着{object}不断{action}，导致其{gone_wrong}。\n冲突点：你指出异常，{primary_npc}却用{absurd_logic}来解释过去。\n升级：为了验证效果，{primary_npc}准备立刻{escalation}。\n结尾困境：{primary_npc}停下动作，转身面对你，周围瞬间死寂，就看你怎么接招。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_PANTRY_001",
+                "skeleton": "\\n场景核心：你独自执行「为经理冲咖啡」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "pantry"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_PANTRY_001",
+                "skeleton": "\\n场景核心：你正在处理「为经理冲咖啡」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "pantry"
+            }
+        ]
+    },
+    "task_pantry_002": {
+        "duo": [
+            {
+                "id": "SKL_PANTRY_002",
+                "room": "pantry",
+                "skeleton": "\n场景核心：{primary_npc}和另一名同事正围绕{conflict_topic}互不相让。\n对立面：{primary_npc}以{stance_a}为由拒绝放手，对方则拿{stance_b}反击。\n升级：争吵迅速升温，两人从{verbal_level}演变成了{physical_level}。\n结尾困境：一个东西摔在你脚边，两人同时停手并看向你，等待你的动作。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            },
+            {
+                "id": "SKL_PANTRY_EV_002",
+                "room": "pantry",
+                "skeleton": "\n场景核心：{primary_npc}试图{evidence_action}，却引发了{evidence_object}的{evidence_gone_wrong}。\n冲突点：{primary_npc}不仅不慌，还认为这恰好证明了{absurd_logic}。\n升级：为了掩盖气味和痕迹，{primary_npc}打算{escalation}。\n结尾困境：{primary_npc}把工具一扔，目光锁定在你身上，把选择权交给了你。\n{bystander_note}\n",
+                "evidence_type": "safety_hazard",
+                "evidence_hint": "让NPC提到茶水间的水源已被丧尸体液污染但未停用，或者微波炉线路短路引发了小型爆炸。"
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_PANTRY_002",
+                "skeleton": "\\n场景核心：你独自执行「补充茶水间物资」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "pantry"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_PANTRY_002",
+                "skeleton": "\\n场景核心：你正在处理「补充茶水间物资」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "pantry"
+            }
+        ]
+    },
+    "task_pantry_003": {
+        "duo": [
+            {
+                "id": "SKL_PANTRY_003",
+                "room": "pantry",
+                "skeleton": "\n场景核心：{primary_npc}拿着{object}拦住了你，它看起来已经{gone_wrong}。\n冲突点：{primary_npc}表示这其实是{absurd_logic}。\n升级：紧接着，{primary_npc}宣布接下来要{escalation}。\n结尾困境：{primary_npc}直勾勾地盯着你，把难题完全抛给了你。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            },
+            {
+                "id": "SKL_PANTRY_006",
+                "room": "pantry",
+                "skeleton": "\n场景核心：一场关于{conflict_topic}的讨论，在{primary_npc}和另一人之间演变成了冲突。\n对立面：{primary_npc}抛出{stance_a}，对方则以{stance_b}回击。\n升级：情绪失控，两人的行为从{verbal_level}滑向了{physical_level}。\n结尾困境：水杯掉在地上的声音打断了他们，两人同时注视着你，等待你的反应。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_PANTRY_003",
+                "skeleton": "\\n场景核心：你独自执行「清洁茶水间」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "pantry"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_PANTRY_003",
+                "skeleton": "\\n场景核心：你正在处理「清洁茶水间」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "pantry"
+            }
+        ]
+    },
+    "task_pantry_004": {
+        "duo": [
+            {
+                "id": "SKL_PANTRY_EV_001",
+                "room": "pantry",
+                "skeleton": "\n场景核心：{primary_npc}正在负责{evidence_action}，但{evidence_object}发生了{evidence_gone_wrong}。\n冲突点：面对你的注视，{primary_npc}毫无愧色地表示这属于{absurd_logic}。\n升级：为了尽快搞定，{primary_npc}决定直接{escalation}。\n结尾困境：{primary_npc}擦了擦手，转头看向你，似乎在要求你表态。\n{bystander_note}\n",
+                "evidence_type": "employee_abuse",
+                "evidence_hint": "让NPC在抱怨时自然提到克扣抗毒血清、用变异狗粮代替员工午餐或者隐瞒员工感染伤口的细节。"
+            },
+            {
+                "id": "SKL_PANTRY_EV_003",
+                "room": "pantry",
+                "skeleton": "\n场景核心：{primary_npc}正躲在角落里{evidence_action}，没留意{evidence_object}已经{evidence_gone_wrong}。\n冲突点：撞见这一幕的你没有出声，但{primary_npc}主动解释说这是为了{absurd_logic}。\n升级：为了封口，{primary_npc}表示可以{escalation}。\n结尾困境：{primary_npc}缓缓走近，一言不发地看着你的眼睛，等你接话。\n{bystander_note}\n",
+                "evidence_type": "corruption",
+                "evidence_hint": "让NPC不小心暴露出在茶水间倒卖公司紧缺医疗物资、私吞高管特供净水或偷窃幸存者遗物的细节。"
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_PANTRY_004",
+                "skeleton": "\\n场景核心：你独自执行「准备会议茶点」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "pantry"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_PANTRY_004",
+                "skeleton": "\\n场景核心：你正在处理「准备会议茶点」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "pantry"
+            }
+        ]
+    },
+    "task_pantry_005": {
+        "duo": [
+            {
+                "id": "SKL_PANTRY_004",
+                "room": "pantry",
+                "skeleton": "\n场景核心：因为{conflict_topic}，{primary_npc}和同事在茶水间僵持不下。\n对立面：{primary_npc}主张{stance_a}，而同事坚持{stance_b}。\n升级：沟通彻底无效，局势从{verbal_level}恶化为{physical_level}。\n结尾困境：不知谁推了谁一把，两人齐刷刷地看向刚好路过的你，等待你打破僵局。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            },
+            {
+                "id": "SKL_PANTRY_007",
+                "room": "pantry",
+                "skeleton": "\n场景核心：{primary_npc}正在处理{object}，即便它已经{gone_wrong}。\n冲突点：面对这种状况，{primary_npc}坚信这是{absurd_logic}的体现。\n升级：作为所谓的福利，{primary_npc}提议{escalation}。\n结尾困境：{primary_npc}挡住了茶水间的出口，将难题抛到你面前，等待你的答复。\n{bystander_note}\n",
+                "evidence_type": null,
+                "evidence_hint": ""
+            }
+        ],
+        "solo": [
+            {
+                "id": "SKL_SOLO_TASK_PANTRY_005",
+                "skeleton": "\\n场景核心：你独自执行「加热午餐」，但眼前的{object}已经{gone_wrong}。\\n冲突点：你试图保持冷静，却忍不住怀疑这一切背后是{absurd_logic}。\\n升级：为了把工作继续推进，你决定{escalation}。\\n结尾困境：四周没有任何同事可以商量，所有后果都将由你一个人承担。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "pantry"
+            }
+        ],
+        "interaction": [
+            {
+                "id": "SKL_INTERACTION_TASK_PANTRY_005",
+                "skeleton": "\\n场景核心：你正在处理「加热午餐」，{primary_npc}却在旁边忙着完全不同的事。\\n互动焦点：你主动上前交流，{primary_npc}对当前局势抛出了关于{conflict_topic}的看法。\\n分歧：你提出自己的判断时，{primary_npc}用{stance_a}回应，而你更倾向于{stance_b}。\\n结尾困境：交流在微妙的紧张中结束，你需要决定是继续合作，还是各自保留判断。\\n",
+                "evidence_type": null,
+                "evidence_hint": "",
+                "room": "pantry"
+            }
+        ]
+    }
+}

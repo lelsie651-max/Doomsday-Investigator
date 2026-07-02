@@ -1,0 +1,4 @@
+item_key,name,price,description,is_active
+battery,电池,50,为小助理补充100%电量,true
+record_card,记录卡,30,空白记录卡,true
+blame_card,嫁祸卡,80,赛博甩锅符,true

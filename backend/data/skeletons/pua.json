@@ -1,0 +1,102 @@
+[
+    {
+        "id": "SKL_PUA_001",
+        "room": "pua",
+        "skeleton": "\n场景核心：门被关上后，经理{pua_opening}。\n施压点：经理抛出关于{pua_topic}的问题，并借机{pua_pressure}。\n升级：经理暗示，如果得不到满意的答复，他将{pua_threat}。\n结尾困境：经理死死锁定你，整个空间陷入停滞，等待你的反应。\n",
+        "evidence_type": null,
+        "evidence_hint": "",
+        "task_ids": [
+            "*"
+        ]
+    },
+    {
+        "id": "SKL_PUA_002",
+        "room": "pua",
+        "skeleton": "\n场景核心：你刚站定，经理便{pua_opening}。\n施压点：经理围绕{pua_topic}步步紧逼，不断{pua_pressure}。\n升级：经理加重了语气，警告这可能会导致{pua_threat}。\n结尾困境：经理靠在椅背上，一言不发地看着你，就看你作何表态。\n",
+        "evidence_type": null,
+        "evidence_hint": "",
+        "task_ids": [
+            "*"
+        ]
+    },
+    {
+        "id": "SKL_PUA_003",
+        "room": "pua",
+        "skeleton": "\n场景核心：经理在阴影中抬起头，{pua_opening}。\n施压点：经理要求你在{pua_topic}上给出结论，顺势{pua_pressure}。\n升级：经理指明，如果这事出了差错就会{pua_threat}。\n结尾困境：经理把一份文件推到你面前，空气仿佛凝固，他在等你接招。\n",
+        "evidence_type": null,
+        "evidence_hint": "",
+        "task_ids": [
+            "*"
+        ]
+    },
+    {
+        "id": "SKL_PUA_004",
+        "room": "pua",
+        "skeleton": "\n场景核心：经理把你叫到面前，{pua_opening}。\n施压点：经理将{pua_topic}的责任抛向你，强行{pua_pressure}。\n升级：经理提醒你，如果不认下这件事，他只好{pua_threat}。\n结尾困境：巨大的压迫感完全笼罩了你，彻底堵死了退路，经理等待你的回答。\n",
+        "evidence_type": null,
+        "evidence_hint": "",
+        "task_ids": [
+            "*"
+        ]
+    },
+    {
+        "id": "SKL_PUA_005",
+        "room": "pua",
+        "skeleton": "\n场景核心：四周没有任何其他人，经理{pua_opening}。\n施压点：经理以{pua_topic}为切入点，开始{pua_pressure}。\n升级：经理明示，如果你不打算配合，就会{pua_threat}。\n结尾困境：经理停下了动作，只剩下沉重的呼吸声，似乎在等你打破沉默。\n",
+        "evidence_type": null,
+        "evidence_hint": "",
+        "task_ids": [
+            "*"
+        ]
+    },
+    {
+        "id": "SKL_PUA_006",
+        "room": "pua",
+        "skeleton": "\n场景核心：气氛极其压抑，经理{pua_opening}。\n施压点：经理质疑你在{pua_topic}上的价值，借此{pua_pressure}。\n升级：经理冷酷地表示，失去价值的下场就是{pua_threat}。\n结尾困境：经理将视线转向你，犹如打量一件待价而沽的物品，等待你的动作。\n",
+        "evidence_type": null,
+        "evidence_hint": "",
+        "task_ids": [
+            "*"
+        ]
+    },
+    {
+        "id": "SKL_PUA_007",
+        "room": "pua",
+        "skeleton": "\n场景核心：经理背对着你，{pua_opening}。\n施压点：经理要求你针对{pua_topic}提供情报，并{pua_pressure}。\n升级：经理转过身，暗示如果你有所隐瞒，他将{pua_threat}。\n结尾困境：经理用毫无感情的目光注视着你，把皮球完全踢给了你。\n",
+        "evidence_type": null,
+        "evidence_hint": "",
+        "task_ids": [
+            "*"
+        ]
+    },
+    {
+        "id": "SKL_PUA_008",
+        "room": "pua",
+        "skeleton": "\n场景核心：经理一反常态，{pua_opening}。\n施压点：经理围绕{pua_topic}提出要求，随后{pua_pressure}。\n升级：经理话锋一转，说明要是达不到预期，他只好{pua_threat}。\n结尾困境：经理双手交叉，视线极具侵略性地扫过你，等待你的表态。\n",
+        "evidence_type": null,
+        "evidence_hint": "",
+        "task_ids": [
+            "*"
+        ]
+    },
+    {
+        "id": "SKL_PUA_009",
+        "room": "pua",
+        "skeleton": "\n场景核心：四周光线昏暗，经理{pua_opening}。\n施压点：经理利用{pua_topic}制造危机感，强硬地{pua_pressure}。\n升级：经理警告，任何反抗者的结局都将是{pua_threat}。\n结尾困境：黑暗中几只眼睛紧盯着你，房间里弥漫着恐怖的压迫感，他在等你出牌。\n",
+        "evidence_type": null,
+        "evidence_hint": "",
+        "task_ids": [
+            "*"
+        ]
+    },
+    {
+        "id": "SKL_PUA_010",
+        "room": "pua",
+        "skeleton": "\n场景核心：经理没有任何寒暄，直接{pua_opening}。\n施压点：经理针对{pua_topic}下达了最后指令，并{pua_pressure}。\n升级：经理明确表示这没有商量余地，否则就会{pua_threat}。\n结尾困境：经理重重地拍击了一下桌面，震慑全场，等待你的最终答复。\n",
+        "evidence_type": null,
+        "evidence_hint": "",
+        "task_ids": [
+            "*"
+        ]
+    }
+]
