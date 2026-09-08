@@ -4,7 +4,7 @@
 - Branch: `develop`
 - Recovery code baseline: `d6b43f7 update the demo version`
 - R2 baseline document commit: `3ac22e5 Create CURRENT_STATE.md`
-- Current phase: `P0-3 — DeepSeek V4 Flash compatibility baseline`
+- Current phase: `P0-3.1 — DeepSeek Non-Thinking Invariant Closure`
 - Purpose: this file is the required starting point for every future development round. It records current code facts plus product-confirmed baseline decisions, not future implementation plans.
 
 ## 2. Current Production Technical Structure
@@ -49,7 +49,8 @@
 ## 5. AI Current State
 - Production baseline model is now `deepseek-v4-flash`.
 - Compatibility mode is explicit non-thinking via Chat Completions `extra_body={"thinking":{"type":"disabled"}}`.
-- AI client/provider/model configuration is not fully unified yet; business modules still import `_client` and `DEEPSEEK_MODEL` directly in multiple places.
+- DeepSeek V4 Flash Chat Completions now route through a shared non-thinking helper, and the helper forcibly preserves `thinking={"type":"disabled"}` even if a caller passes conflicting `extra_body`.
+- Business modules still depend directly on `DEEPSEEK_MODEL` and the shared helper; provider / logger / routing still do not form a formal abstraction layer.
 - Timeout / prompt / logger / parse / fallback behavior is only partially centralized. `AIService` covers many paths, but provider usage is not yet fully converged.
 - `base_url` remains `https://api.deepseek.com` and Chat Completions remains the active API surface.
 - Provider / logger consolidation is still deferred to `P1`; this round only establishes the V4 Flash non-thinking compatibility baseline.
@@ -113,6 +114,7 @@
 - `P0-2A — Hilda migration preflight`: completed
 - `P0-2B — formal Hilda production migration`: pending product profile confirmation
 - `P0-3 — DeepSeek V4 Flash compatibility baseline`: completed
+- `P0-3.1 — DeepSeek Non-Thinking Invariant Closure`: completed
 - `P0 — version / rules unification`
 - `P1 — existing system consolidation`, including:
   - `GameController` behavior baseline

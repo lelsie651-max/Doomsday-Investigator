@@ -1,10 +1,13 @@
 import ast
+import asyncio
 from pathlib import Path
 
+import backend.ai_service as ai_service
 from backend.ai_service import (
     DEEPSEEK_BASE_URL,
     DEEPSEEK_MODEL,
     DEEPSEEK_THINKING_EXTRA_BODY,
+    create_deepseek_chat_completion,
 )
 
 
@@ -88,6 +91,58 @@ def test_helper_wraps_direct_client_with_extra_body() -> None:
     assert "extra_body" in keyword_names
 
 
+def test_helper_forces_non_thinking_behavior() -> None:
+    captured_calls: list[dict] = []
+    original_create = ai_service._client.chat.completions.create
+
+    async def fake_create(**kwargs):
+        captured_calls.append(kwargs)
+        return {"mocked": True, "kwargs": kwargs}
+
+    ai_service._client.chat.completions.create = fake_create
+    try:
+        result_a = asyncio.run(
+            create_deepseek_chat_completion(
+                model="mock-model",
+                messages=[{"role": "user", "content": "A"}],
+            )
+        )
+        result_b = asyncio.run(
+            create_deepseek_chat_completion(
+                model="mock-model",
+                messages=[{"role": "user", "content": "B"}],
+                extra_body={"custom_key": "keep_me"},
+            )
+        )
+        result_c = asyncio.run(
+            create_deepseek_chat_completion(
+                model="mock-model",
+                messages=[{"role": "user", "content": "C"}],
+                extra_body={
+                    "thinking": {"type": "enabled"},
+                    "custom_key": "keep_me",
+                },
+            )
+        )
+    finally:
+        ai_service._client.chat.completions.create = original_create
+
+    assert result_a["mocked"] is True
+    assert result_b["mocked"] is True
+    assert result_c["mocked"] is True
+    assert len(captured_calls) == 3
+
+    case_a = captured_calls[0]["extra_body"]
+    case_b = captured_calls[1]["extra_body"]
+    case_c = captured_calls[2]["extra_body"]
+
+    assert case_a == {"thinking": {"type": "disabled"}}
+    assert case_b["custom_key"] == "keep_me"
+    assert case_b["thinking"] == {"type": "disabled"}
+    assert case_c["custom_key"] == "keep_me"
+    assert case_c["thinking"] == {"type": "disabled"}
+
+
 def test_all_audited_ai_calls_route_through_helper() -> None:
     direct_counts: dict[str, int] = {}
     helper_counts: dict[str, int] = {}
@@ -148,6 +203,7 @@ if __name__ == "__main__":
     test_constants()
     test_no_production_deepseek_chat_assignment()
     test_helper_wraps_direct_client_with_extra_body()
+    test_helper_forces_non_thinking_behavior()
     test_all_audited_ai_calls_route_through_helper()
     test_parameters_were_not_globally_flattened()
     print("PASS: test_ai_runtime_baseline")

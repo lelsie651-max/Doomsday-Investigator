@@ -56,15 +56,8 @@ _client = AsyncOpenAI(
 
 async def create_deepseek_chat_completion(**kwargs):
     """Shared DeepSeek chat completion entry that always disables thinking."""
-    extra_body = kwargs.pop("extra_body", None)
-    if extra_body is None:
-        merged_extra_body = dict(DEEPSEEK_THINKING_EXTRA_BODY)
-    else:
-        merged_extra_body = dict(extra_body)
-        merged_extra_body.setdefault(
-            "thinking",
-            DEEPSEEK_THINKING_EXTRA_BODY["thinking"],
-        )
+    merged_extra_body = dict(kwargs.pop("extra_body", None) or {})
+    merged_extra_body["thinking"] = dict(DEEPSEEK_THINKING_EXTRA_BODY["thinking"])
     return await _client.chat.completions.create(
         extra_body=merged_extra_body,
         **kwargs,
