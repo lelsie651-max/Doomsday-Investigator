@@ -1,6 +1,12 @@
 import random
 
-from .constants import BOSS_DEFAULT_ROOM, BOSS_PATROL_ROOMS, BOSS_PUA_ROOM, BOSS_SHADY_ROOM
+from .constants import (
+    BOSS_DEFAULT_ROOM,
+    BOSS_PATROL_ROOMS,
+    BOSS_PUA_ROOM,
+    BOSS_SHADY_ROOM,
+    DAILY_ACTION_POINTS,
+)
 from .data_loader import DataLoader
 from .enums import BossBehavior, Room
 from .models import BossState, NPCState, PlayerState, Task
@@ -31,7 +37,7 @@ class MovementSystem:
     def generate_boss_hourly_plan(
         boss: BossState,
         day: int,
-        total_hours: int = 8,
+        total_hours: int = DAILY_ACTION_POINTS,
     ) -> list[BossBehavior]:
         weights = boss.patrol_weights.get(day, boss.patrol_weights[1])
         plan: list[BossBehavior] = []

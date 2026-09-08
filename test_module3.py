@@ -16,7 +16,7 @@ assert state.boss.current_room == Room.BOSS_OFFICE
 print("✅ 经理初始位置为经理办公室")
 
 plan = MovementSystem.generate_boss_hourly_plan(state.boss, day=1)
-assert len(plan) == 8, f"行为计划应有8小时，实际{len(plan)}"
+assert len(plan) == 5, f"行为计划应有5小时，实际{len(plan)}"
 for b in plan:
     assert isinstance(b, BossBehavior)
 pua_count = plan.count(BossBehavior.PUA)
@@ -54,7 +54,7 @@ sm = StateManager(state2)
 sm.setup_daily_tasks()
 
 pool = state2.daily.task_pool
-player_picks = [t.id for t in pool[:6]]
+player_picks = [t.id for t in pool[:5]]
 sm.player_select_tasks(player_picks)
 
 coworkers = sm.get_player_coworkers()
@@ -109,7 +109,7 @@ state3 = GameState.new_game()
 sm3 = StateManager(state3)
 sm3.setup_daily_tasks()
 pool3 = state3.daily.task_pool
-sm3.player_select_tasks([t.id for t in pool3[:6]])
+sm3.player_select_tasks([t.id for t in pool3[:5]])
 
 original_room = state3.npcs["laowang"].current_room.value
 pua_result = MovementSystem.handle_pua_interruption("laowang", state3.player, state3.npcs)
@@ -149,7 +149,7 @@ for day in range(1, 6):
         patrol_count += day_plan.count(BossBehavior.PATROL)
     avg_patrol = patrol_count / sample_size
     plans_by_day[day] = avg_patrol
-    print(f"  第{day}天 平均巡视次数：{avg_patrol:.1f}/8小时")
+    print(f"  第{day}天 平均巡视次数：{avg_patrol:.1f}/5小时")
 
 assert plans_by_day[5] > plans_by_day[1], "第5天巡视应多于第1天"
 print("✅ 经理行为权重随天数递增正确")

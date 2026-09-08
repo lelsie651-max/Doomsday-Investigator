@@ -2,8 +2,9 @@
 
 ## 1. Recovery Baseline
 - Branch: `develop`
-- Baseline commit: `d6b43f7 update the demo version`
-- Current phase: `R2 — Current State Baseline`
+- Recovery code baseline: `d6b43f7 update the demo version`
+- R2 baseline document commit: `3ac22e5 Create CURRENT_STATE.md`
+- Current phase: `P0-1 — 5-slot time baseline unification`
 - Purpose: this file is the required starting point for every future development round. It records current code facts plus product-confirmed baseline decisions, not future implementation plans.
 
 ## 2. Current Production Technical Structure
@@ -75,7 +76,7 @@
 
 ## 7. Current Major Version Drift
 - `zhoujie / xida / hilda`: current running code still centers `zhoujie`, while product canonical target is `hilda`; `xida` is a PoC leftover in extended profiles.
-- `5 slots / 8 hours`: production loop is now 5 work slots, but 8-hour wording still exists in comments, helper defaults, and old tests.
+- `5 slots / 8 hours`: formal production paths and time-baseline regression coverage now use 5 work slots; remaining 8-hour mentions are legacy or archived residue, not current production rules.
 - `deepseek-chat / deepseek-v4-flash`: code reality and product target baseline are currently different.
 - Deprecated AI task selection path: NPC daytime work in production is rule-assigned, while old AI selection code still remains as compatibility/deprecated residue.
 - Tests and protocol drift: some scripts and documents still reflect old assumptions, old routes, or old hour counts rather than the current production chain.
@@ -101,7 +102,8 @@
 
 ## 9. Recovery Sequence
 - `R1 — Project Recovery Audit`: completed
-- `R2 — Current State Baseline`: this round
+- `R2 — Current State Baseline`: completed
+- `P0-1 — 5-slot time baseline unification`: completed
 - `P0 — version / rules unification`
 - `P1 — existing system consolidation`, including:
   - `GameController` behavior baseline

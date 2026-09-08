@@ -37,10 +37,10 @@ sm = StateManager(state)
 
 TaskSystem.assign_all_npcs_tasks(state.npcs)
 for npc_id, npc in state.npcs.items():
-    assert len(npc.selected_tasks) == 8, f"{npc.name}应有8个任务"
+    assert len(npc.selected_tasks) == 5, f"{npc.name}应有5个任务"
     assert npc.current_task_index == 0
     assert npc.current_room == npc.selected_tasks[0].room
-print("✅ NPC任务分配正确：每人8个任务")
+print("✅ NPC任务分配正确：每人5个任务")
 
 dazhuang_rooms = [t.room.value for t in state.npcs["dazhuang"].selected_tasks]
 print(f"  大壮房间分布：{dazhuang_rooms}（应偏向warehouse）")
@@ -50,21 +50,20 @@ sm2 = StateManager(state2)
 sm2.setup_daily_tasks()
 
 pool = state2.daily.task_pool
-task_ids = [t.id for t in pool[:8]]
+task_ids = [t.id for t in pool[:5]]
 
 ok, msg = sm2.player_select_tasks(task_ids)
 assert ok, f"合法选择应通过，但报错：{msg}"
-assert len(state2.player.selected_tasks) == 8
-print("✅ 玩家选择8个任务：通过")
+assert len(state2.player.selected_tasks) == 5
+print("✅ 玩家选择5个任务：通过")
 
-task_ids_9 = [t.id for t in pool[:9]]
 state3 = GameState.new_game()
 sm3 = StateManager(state3)
 sm3.setup_daily_tasks()
 pool3 = state3.daily.task_pool
-task_ids_over = [t.id for t in pool3[:9]]
+task_ids_over = [t.id for t in pool3[:6]]
 ok3, msg3 = sm3.player_select_tasks(task_ids_over)
-assert not ok3, "选9个应失败"
+assert not ok3, "超过当前5任务上限应失败"
 print(f"✅ 超时选择被拒绝：{msg3}")
 
 task_ids_dup = [pool3[0].id, pool3[0].id, pool3[1].id]
@@ -118,10 +117,10 @@ assert len(state_full.daily.task_pool) == 12
 assert len(state_full.daily.evidence_task_ids) >= 2
 print("✅ 每日任务设置完成")
 
-player_picks = [t.id for t in state_full.daily.task_pool[:6]]
+player_picks = [t.id for t in state_full.daily.task_pool[:5]]
 ok, msg = sm_full.player_select_tasks(player_picks)
 assert ok
-print("✅ 玩家选择6个任务")
+print("✅ 玩家选择5个任务")
 
 ctx = sm_full.get_current_task_prompt_context()
 assert ctx is not None
