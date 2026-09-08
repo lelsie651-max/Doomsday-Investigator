@@ -11,7 +11,7 @@ import asyncio
 import random
 import re
 
-from .ai_service import _client, DEEPSEEK_MODEL, AIService
+from .ai_service import AIService, DEEPSEEK_MODEL, create_deepseek_chat_completion
 from .ai_logger import AILogger
 from .data_loader import DataLoader
 from .memory_system import MemorySystem
@@ -82,7 +82,7 @@ class AgentService:
 
         try:
             _start = AILogger.start_timer()
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},
@@ -256,7 +256,7 @@ class AgentService:
         }
         try:
             _start = AILogger.start_timer()
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},
@@ -450,7 +450,7 @@ class AgentService:
 
         try:
             _start = AILogger.start_timer()
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},

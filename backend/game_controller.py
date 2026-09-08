@@ -13,7 +13,7 @@ import copy
 import logging
 import random
 
-from .ai_service import AIService, DEEPSEEK_MODEL, _client
+from .ai_service import AIService, DEEPSEEK_MODEL, create_deepseek_chat_completion
 from .agent_service import AgentService
 from .ai_logger import AILogger
 from .config_loader import PUA_EVENTS_CONFIG
@@ -1360,7 +1360,7 @@ class GameController:
         )
         try:
             _start = AILogger.start_timer()
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.95,
@@ -6197,7 +6197,7 @@ class GameController:
             "4. 风格荒诞黑色幽默，但不要出现额外人物。\n"
         )
         try:
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.85,
@@ -6250,7 +6250,7 @@ class GameController:
 
         try:
             _start = AILogger.start_timer()
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.9,
@@ -6526,7 +6526,7 @@ class GameController:
 
         try:
             _start = AILogger.start_timer()
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.9,
@@ -6646,7 +6646,7 @@ class GameController:
         )
         try:
             _start = AILogger.start_timer()
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.85,

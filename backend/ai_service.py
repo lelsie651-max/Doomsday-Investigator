@@ -38,7 +38,12 @@ load_dotenv(_env_path)
 # DeepSeek API 配置
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
 DEEPSEEK_BASE_URL = "https://api.deepseek.com"
-DEEPSEEK_MODEL = "deepseek-chat"
+DEEPSEEK_MODEL = "deepseek-v4-flash"
+DEEPSEEK_THINKING_EXTRA_BODY = {
+    "thinking": {
+        "type": "disabled",
+    }
+}
 
 # 创建异步客户端
 _client = AsyncOpenAI(
@@ -47,6 +52,23 @@ _client = AsyncOpenAI(
     max_retries=0,   # 禁用自动重试,12秒超时后直接走 fallback
     timeout=12.0,    # 单次请求超时(秒)
 )
+
+
+async def create_deepseek_chat_completion(**kwargs):
+    """Shared DeepSeek chat completion entry that always disables thinking."""
+    extra_body = kwargs.pop("extra_body", None)
+    if extra_body is None:
+        merged_extra_body = dict(DEEPSEEK_THINKING_EXTRA_BODY)
+    else:
+        merged_extra_body = dict(extra_body)
+        merged_extra_body.setdefault(
+            "thinking",
+            DEEPSEEK_THINKING_EXTRA_BODY["thinking"],
+        )
+    return await _client.chat.completions.create(
+        extra_body=merged_extra_body,
+        **kwargs,
+    )
 
 COMBO_TONE = COMBO_TONE_CONFIG
 
@@ -465,7 +487,7 @@ class AIService:
 
         try:
             _start = AILogger.start_timer()
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},
@@ -630,7 +652,7 @@ class AIService:
 
         try:
             _start = AILogger.start_timer()
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},
@@ -816,7 +838,7 @@ class AIService:
 
         try:
             _start = AILogger.start_timer()
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},
@@ -1081,7 +1103,7 @@ class AIService:
         try:
             _start = AILogger.start_timer()
             max_tokens = 1200
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},
@@ -1167,7 +1189,7 @@ class AIService:
                 act1_text=act1_text,
             )
             _start = AILogger.start_timer()
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},
@@ -1245,7 +1267,7 @@ class AIService:
                 full_pua_text=full_pua_text,
             )
             _start = AILogger.start_timer()
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},
@@ -1427,7 +1449,7 @@ class AIService:
 
         try:
             _start = AILogger.start_timer()
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},
@@ -1505,7 +1527,7 @@ class AIService:
 
         try:
             _start = AILogger.start_timer()
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},
@@ -1591,7 +1613,7 @@ class AIService:
 
         try:
             _start = AILogger.start_timer()
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},
@@ -1693,7 +1715,7 @@ class AIService:
 
         try:
             _start = AILogger.start_timer()
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},
@@ -1908,7 +1930,7 @@ class AIService:
         )
         try:
             _start = AILogger.start_timer()
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},
@@ -2006,7 +2028,7 @@ class AIService:
 
         try:
             _start = AILogger.start_timer()
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},
@@ -2096,7 +2118,7 @@ class AIService:
 
         try:
             _start = AILogger.start_timer()
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},

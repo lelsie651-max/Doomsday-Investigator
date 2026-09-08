@@ -2,7 +2,7 @@ import asyncio
 import re
 
 from .ai_logger import AILogger
-from .ai_service import AIService, DEEPSEEK_MODEL, _client
+from .ai_service import AIService, DEEPSEEK_MODEL, create_deepseek_chat_completion
 from .data_loader import DataLoader
 
 
@@ -239,7 +239,7 @@ class NightAllianceSystem:
         fallback_story = f"{npc_name}压低声音敲门：“{player_name}，明天咱们一起投{target_name}，别给他翻身机会。”"
         try:
             _start = AILogger.start_timer()
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},
@@ -381,7 +381,7 @@ class NightAllianceSystem:
 
         try:
             _start = AILogger.start_timer()
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},

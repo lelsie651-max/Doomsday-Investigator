@@ -20,7 +20,7 @@ import json
 from pathlib import Path
 from typing import Optional
 
-from .ai_service import _client, DEEPSEEK_MODEL
+from .ai_service import DEEPSEEK_MODEL, create_deepseek_chat_completion
 from .ai_logger import AILogger
 from .prompt_registry import PromptRegistry
 
@@ -107,7 +107,7 @@ class DailyStateService:
                 player_name=effective_player_name,
             )
 
-            response = await _client.chat.completions.create(
+            response = await create_deepseek_chat_completion(
                 model=DEEPSEEK_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},

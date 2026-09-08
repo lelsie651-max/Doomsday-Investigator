@@ -4,7 +4,7 @@
 - Branch: `develop`
 - Recovery code baseline: `d6b43f7 update the demo version`
 - R2 baseline document commit: `3ac22e5 Create CURRENT_STATE.md`
-- Current phase: `P0-2A — Hilda migration preflight`
+- Current phase: `P0-3 — DeepSeek V4 Flash compatibility baseline`
 - Purpose: this file is the required starting point for every future development round. It records current code facts plus product-confirmed baseline decisions, not future implementation plans.
 
 ## 2. Current Production Technical Structure
@@ -38,20 +38,21 @@
   - `dazhuang`
   - `hilda`
   - `boss`
-- Current codebase has not completed the `hilda` migration yet and still uses `zhoujie` in production data and logic.
-- `zhoujie` is an obsolete old version, and `xida` is only a non-canonical PoC-stage ID left inside Daily State extended profiles.
+- Current codebase has not completed the `hilda` production migration yet and still uses `zhoujie` in production data and logic.
+- The old `xida` PoC placeholder in extended profiles has already been safely unified to `hilda` during `P0-2A`.
 - `P0-2` is split into `P0-2A` and `P0-2B`.
-- `P0-2A` only unifies the empty PoC placeholder `xida` to `hilda` inside `npc_extended_profiles.json`.
+- `P0-2A` completed the safe unification of the empty PoC placeholder `xida` to `hilda` inside `npc_extended_profiles.json`.
 - Production runtime still uses `zhoujie` deliberately during `P0-2A`.
 - Reason: the current `zhoujie` block contains deprecated Zhoujie-specific semantic content that must not be mechanically inherited by `hilda`.
 - `P0-2B` must wait for product-confirmed required production-profile fields for `hilda` before formal migration can start.
 
 ## 5. AI Current State
-- Current code reality still uses `deepseek-chat`.
-- This is a confirmed version drift. Product target baseline is `deepseek-v4-flash`.
+- Production baseline model is now `deepseek-v4-flash`.
+- Compatibility mode is explicit non-thinking via Chat Completions `extra_body={"thinking":{"type":"disabled"}}`.
 - AI client/provider/model configuration is not fully unified yet; business modules still import `_client` and `DEEPSEEK_MODEL` directly in multiple places.
 - Timeout / prompt / logger / parse / fallback behavior is only partially centralized. `AIService` covers many paths, but provider usage is not yet fully converged.
-- This round does not change model config, client wiring, or any paid API path.
+- `base_url` remains `https://api.deepseek.com` and Chat Completions remains the active API surface.
+- Provider / logger consolidation is still deferred to `P1`; this round only establishes the V4 Flash non-thinking compatibility baseline.
 
 ## 6. NPC Daily Context / Daily State PoC — EXPERIMENTAL / NOT PRODUCT-APPROVED
 - `DailyStateService` must be treated as:
@@ -80,9 +81,9 @@
 - Important boundary: do not prematurely define `inner_attitudes_toward_others` or `midterm_goal_state` as permanently system-private. The clearly access-controlled area today is `leakable_details`; final actor-context policy for the other fields is still pending separate architecture design.
 
 ## 7. Current Major Version Drift
-- `zhoujie / xida / hilda`: current running code still centers `zhoujie`, while product canonical target is `hilda`; `xida` is a PoC leftover in extended profiles.
+- `zhoujie / hilda`: current running code still centers `zhoujie`, while product canonical target is `hilda`; the old `xida` PoC placeholder has already been unified to `hilda`.
 - `5 slots / 8 hours`: formal production paths and time-baseline regression coverage now use 5 work slots; remaining 8-hour mentions are legacy or archived residue, not current production rules.
-- `deepseek-chat / deepseek-v4-flash`: code reality and product target baseline are currently different.
+- `deepseek-v4-flash / provider consolidation`: model baseline is now aligned, but provider / logger usage is still not fully consolidated.
 - Deprecated AI task selection path: NPC daytime work in production is rule-assigned, while old AI selection code still remains as compatibility/deprecated residue.
 - Tests and protocol drift: some scripts and documents still reflect old assumptions, old routes, or old hour counts rather than the current production chain.
 - Compatibility / dead-path residue still exists in cleanup targets and some older interfaces; file existence alone does not mean active production usage.
@@ -109,8 +110,9 @@
 - `R1 — Project Recovery Audit`: completed
 - `R2 — Current State Baseline`: completed
 - `P0-1 — 5-slot time baseline unification`: completed
-- `P0-2A — Hilda migration preflight`: in progress
+- `P0-2A — Hilda migration preflight`: completed
 - `P0-2B — formal Hilda production migration`: pending product profile confirmation
+- `P0-3 — DeepSeek V4 Flash compatibility baseline`: completed
 - `P0 — version / rules unification`
 - `P1 — existing system consolidation`, including:
   - `GameController` behavior baseline
