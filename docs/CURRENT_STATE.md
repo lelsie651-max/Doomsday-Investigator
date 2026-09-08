@@ -4,7 +4,7 @@
 - Branch: `develop`
 - Recovery code baseline: `d6b43f7 update the demo version`
 - R2 baseline document commit: `3ac22e5 Create CURRENT_STATE.md`
-- Current phase: `P0-1 — 5-slot time baseline unification`
+- Current phase: `P0-2A — Hilda migration preflight`
 - Purpose: this file is the required starting point for every future development round. It records current code facts plus product-confirmed baseline decisions, not future implementation plans.
 
 ## 2. Current Production Technical Structure
@@ -40,6 +40,11 @@
   - `boss`
 - Current codebase has not completed the `hilda` migration yet and still uses `zhoujie` in production data and logic.
 - `zhoujie` is an obsolete old version, and `xida` is only a non-canonical PoC-stage ID left inside Daily State extended profiles.
+- `P0-2` is split into `P0-2A` and `P0-2B`.
+- `P0-2A` only unifies the empty PoC placeholder `xida` to `hilda` inside `npc_extended_profiles.json`.
+- Production runtime still uses `zhoujie` deliberately during `P0-2A`.
+- Reason: the current `zhoujie` block contains deprecated Zhoujie-specific semantic content that must not be mechanically inherited by `hilda`.
+- `P0-2B` must wait for product-confirmed required production-profile fields for `hilda` before formal migration can start.
 
 ## 5. AI Current State
 - Current code reality still uses `deepseek-chat`.
@@ -104,6 +109,8 @@
 - `R1 — Project Recovery Audit`: completed
 - `R2 — Current State Baseline`: completed
 - `P0-1 — 5-slot time baseline unification`: completed
+- `P0-2A — Hilda migration preflight`: in progress
+- `P0-2B — formal Hilda production migration`: pending product profile confirmation
 - `P0 — version / rules unification`
 - `P1 — existing system consolidation`, including:
   - `GameController` behavior baseline
