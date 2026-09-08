@@ -4,7 +4,7 @@
 - Branch: `develop`
 - Recovery code baseline: `d6b43f7 update the demo version`
 - R2 baseline document commit: `3ac22e5 Create CURRENT_STATE.md`
-- Current phase: `P0-3.1 — DeepSeek Non-Thinking Invariant Closure`
+- Current phase: `P0-4A — Environment Reproducibility Baseline`
 - Purpose: this file is the required starting point for every future development round. It records current code facts plus product-confirmed baseline decisions, not future implementation plans.
 
 ## 2. Current Production Technical Structure
@@ -54,6 +54,13 @@
 - Timeout / prompt / logger / parse / fallback behavior is only partially centralized. `AIService` covers many paths, but provider usage is not yet fully converged.
 - `base_url` remains `https://api.deepseek.com` and Chat Completions remains the active API surface.
 - Provider / logger consolidation is still deferred to `P1`; this round only establishes the V4 Flash non-thinking compatibility baseline.
+
+## 5A. Environment Baseline
+- Canonical dependencies are defined by `requirements.txt`.
+- Clean-environment verification passed in a repo-external temporary venv using Python `3.13.5`.
+- Declared OpenAI SDK version for the reproducible baseline is `openai==2.15.0`.
+- Clean-environment verification confirmed that `openai 2.15.0` supports the current helper's required `extra_body` capability.
+- Developer-local environments may differ from the canonical baseline; the locally installed `openai 2.30.0` is drift, not the canonical requirement.
 
 ## 6. NPC Daily Context / Daily State PoC — EXPERIMENTAL / NOT PRODUCT-APPROVED
 - `DailyStateService` must be treated as:
@@ -115,6 +122,7 @@
 - `P0-2B — formal Hilda production migration`: pending product profile confirmation
 - `P0-3 — DeepSeek V4 Flash compatibility baseline`: completed
 - `P0-3.1 — DeepSeek Non-Thinking Invariant Closure`: completed
+- `P0-4A — Environment Reproducibility Baseline`: completed
 - `P0 — version / rules unification`
 - `P1 — existing system consolidation`, including:
   - `GameController` behavior baseline
