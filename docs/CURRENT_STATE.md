@@ -4,7 +4,7 @@
 - Branch: `develop`
 - Recovery code baseline: `d6b43f7 update the demo version`
 - R2 baseline document commit: `3ac22e5 Create CURRENT_STATE.md`
-- Current phase: `P0-4A — Environment Reproducibility Baseline`
+- Current phase: `P0-4B — Legacy / Compatibility Runtime Audit`
 - Purpose: this file is the required starting point for every future development round. It records current code facts plus product-confirmed baseline decisions, not future implementation plans.
 
 ## 2. Current Production Technical Structure
@@ -95,6 +95,13 @@
 - Deprecated AI task selection path: NPC daytime work in production is rule-assigned, while old AI selection code still remains as compatibility/deprecated residue.
 - Tests and protocol drift: some scripts and documents still reflect old assumptions, old routes, or old hour counts rather than the current production chain.
 - Compatibility / dead-path residue still exists in cleanup targets and some older interfaces; file existence alone does not mean active production usage.
+- `legacy != dead`: active fallback and compatibility shells still exist in current runtime and must not be removed without behavior locks.
+
+## 7A. Legacy Runtime Audit
+- Runtime legacy / compatibility audit is tracked in `docs/LEGACY_RUNTIME_AUDIT.md`.
+- Current audit confirms that legacy-looking code splits across active production paths, active compatibility shells, active fallback paths, debug/manual-only routes, unreachable implementations, and archived references.
+- Active fallback must not be treated as dead code.
+- Compatibility shells should only be removed after behavior is locked and the formal flow decision is explicit.
 
 ## 8. Current Test Asset Status
 - Keepable deterministic / regression assets:
@@ -123,6 +130,7 @@
 - `P0-3 — DeepSeek V4 Flash compatibility baseline`: completed
 - `P0-3.1 — DeepSeek Non-Thinking Invariant Closure`: completed
 - `P0-4A — Environment Reproducibility Baseline`: completed
+- `P0-4B — Legacy / Compatibility Runtime Audit`: completed
 - `P0 — version / rules unification`
 - `P1 — existing system consolidation`, including:
   - `GameController` behavior baseline
