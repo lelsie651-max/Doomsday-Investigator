@@ -4,7 +4,7 @@
 - Branch: `develop`
 - Recovery code baseline: `d6b43f7 update the demo version`
 - R2 baseline document commit: `3ac22e5 Create CURRENT_STATE.md`
-- Current phase: `P0-4B — Legacy / Compatibility Runtime Audit`
+- Current phase: `P1-0A — Behavior Truth Audit`
 - Purpose: this file is the required starting point for every future development round. It records current code facts plus product-confirmed baseline decisions, not future implementation plans.
 
 ## 2. Current Production Technical Structure
@@ -103,6 +103,12 @@
 - Active fallback must not be treated as dead code.
 - Compatibility shells should only be removed after behavior is locked and the formal flow decision is explicit.
 
+## 7B. Behavior Truth Audit
+- Behavior truth audit is tracked in `docs/BEHAVIOR_TRUTH_AUDIT.md`.
+- Known failing regression checkpoints are not automatically confirmed production bugs.
+- `test_bystander_memory_regression.py` currently remains a known failing baseline and must be truth-classified before any bug-fix round claims production regressions.
+- Current audit distinguishes `CURRENT CODE FACT`, `PRODUCT-CONFIRMED INVARIANT`, and `PENDING FLOW REDESIGN`.
+
 ## 8. Current Test Asset Status
 - Keepable deterministic / regression assets:
   - `test_bystander_memory_regression.py`
@@ -117,8 +123,8 @@
   - `backend/test_daily_state_demo.py`
   - `backend/test_negotiation_behavior.py`
 - Clearly drifted legacy scripts:
-  - `test_module2.py`
-  - `test_module3.py`
+  - whole-file labels for `test_module2.py` / `test_module3.py` are no longer considered sufficient
+  - mixed/block-level truth map now lives in `docs/BEHAVIOR_TRUTH_AUDIT.md`
   - other older protocol/compatibility-oriented scripts should not be assumed to match the current main loop without revalidation.
 
 ## 9. Recovery Sequence
@@ -131,7 +137,9 @@
 - `P0-3.1 — DeepSeek Non-Thinking Invariant Closure`: completed
 - `P0-4A — Environment Reproducibility Baseline`: completed
 - `P0-4B — Legacy / Compatibility Runtime Audit`: completed
-- `P0 — version / rules unification`
+- `P0 engineering cleanup`: completed except `P0-2B — formal Hilda production migration`
+- `P0-2B — formal Hilda production migration`: blocked by product redesign / pending product profile confirmation
+- `P1-0A — Behavior Truth Audit`: completed
 - `P1 — existing system consolidation`, including:
   - `GameController` behavior baseline
   - `GameController` modular extraction

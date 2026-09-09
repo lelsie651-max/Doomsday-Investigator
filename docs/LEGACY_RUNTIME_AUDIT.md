@@ -94,17 +94,20 @@ Do not remove these fallback paths without a behavior lock first.
 - `cleanup_scan_report.md` mentions `_handle_spy_chat` / `_handle_record_chat`, but these handlers do not exist in current `server.py`; that report is historical reference, not current routing truth.
 
 ## 8. Test Asset Truth Map
+- File-level labels are safe only for the fully deterministic baseline tests.
+- For mixed legacy files, block-level truth mapping now lives in `docs/BEHAVIOR_TRUTH_AUDIT.md`.
+
 | Asset | Truth category | Why |
 | --- | --- | --- |
 | `test_ai_runtime_baseline.py` | `CURRENT_BASELINE` | Deterministic offline guard for DeepSeek runtime config and helper invariants |
 | `test_time_baseline.py` | `CURRENT_BASELINE` | Protects current 5-slot time baseline |
 | `test_scenario_matrix.py` | `CURRENT_BASELINE` | Protects current work-route scenario matrix and debug seeding assumptions |
-| `test_bystander_memory_regression.py` | `CURRENT_KNOWN_FAILING_BASELINE` | Known fingerprint is intentionally recorded as `PASS {4,8} / FAIL {1,2,3,5,6,7}` |
-| `test_module6.py` | `LEGACY_BUT_USEFUL` | Exercises old vote system primitives and still validates useful rule tendencies, but not the full current AI vote production chain |
-| `test_module2.py` | `OBSOLETE_EXPECTATION` | Still assumes old task-count / selection behavior and older state-manager flow |
-| `test_module3.py` | `OBSOLETE_EXPECTATION` | Still asserts old boss PUA planning expectations that no longer match current production routing |
-| `test_module4.py` | `LEGACY_BUT_USEFUL` | Directly exercises old event template APIs; useful for template fallback sanity, but not the main v2 production path |
-| `test_module7.py` | `OBSOLETE_EXPECTATION` | Walks outdated synchronous / old night path assumptions and no longer matches the formal websocket chain |
+| `test_bystander_memory_regression.py` | `CURRENT_KNOWN_FAILING_BASELINE` | Known fingerprint is intentionally recorded as `PASS {4,8} / FAIL {1,2,3,5,6,7}`; truth classification now lives in `docs/BEHAVIOR_TRUTH_AUDIT.md` |
+| `test_module2.py` | `MIXED — SEE BEHAVIOR_TRUTH_AUDIT` | Contains current low-level invariants plus debug-only observations; no longer safe to classify at whole-file granularity |
+| `test_module3.py` | `MIXED — SEE BEHAVIOR_TRUTH_AUDIT` | Contains current structural checks, statistical behavior, and obsolete boss-plan expectations |
+| `test_module4.py` | `MIXED — SEE BEHAVIOR_TRUTH_AUDIT` | Contains useful fallback coverage plus obsolete legacy-combo expectations |
+| `test_module6.py` | `MIXED — SEE BEHAVIOR_TRUTH_AUDIT` | Contains both current vote-structure invariants and statistical tendency checks |
+| `test_module7.py` | `MIXED — SEE BEHAVIOR_TRUTH_AUDIT` | Mixes current baseline structure, debug observation loops, and obsolete old-flow assumptions |
 | `test_ws_client.py` | `DEBUG_TOOL` | Manual websocket client probe, not a canonical regression baseline |
 | `test_ai_pipeline.py` | `MANUAL_AI` | Explicitly contains real-model path and human observation intent |
 | `backend/test_daily_state_demo.py` | `MANUAL_AI` | Demo / PoC AI script, not a baseline regression test |
